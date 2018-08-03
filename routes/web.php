@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/image/all', 'MainController@imageAll');
+//Route::get('/image/all', 'MainController@imageAll');
 Route::get('/', 'MainController@index');
 Route::get('/test', 'MainController@test');
 Route::get('/home', 'MainController@index');

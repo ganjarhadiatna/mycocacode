@@ -21,7 +21,7 @@
 }
 
 html {
-	background-color: $min-color;
+	background-color: rgba(225,225,225,0.24);
 	&.set-scroll {
 		overflow-y: hidden;
 	}
@@ -104,7 +104,7 @@ a {
 	&.ctn-sek-color {
 		color: $txt-sek-color;
 		a {
-			color: $txt-min-color;
+			color: $txt-sek-color;
 		}
 	}
 	&.ctn-min-color {
@@ -137,7 +137,7 @@ a {
 #header {
 	position: relative;
 	width: 100%;
-	height: 60px;
+	height: 50px;
 	background-color: $sek-color;
 	@media (max-width: $max-width) {
 		height: 100px;
@@ -147,14 +147,15 @@ a {
 		top: 0;
 		left: 0;
 		width: 100%;
-		z-index: 100;;
-		background-color: $min-color;
+		z-index: 100;
+		background-color: $sek-color;
+		@include bdr_bottom();
 		.menu {
 			position: relative;
-			padding: 10px 0;
+			width: calc(100% - 30px);
+			padding: 10px 15px;
 			cursor: default;
-			@include grid_3x(120px, 1fr, 1fr);
-			@include col_full();
+			@include grid_3x(1fr, 1fr, 1fr);
 			@media (max-width: $max-width) {
 				@include grid_2x(100px, 1fr);
 			}
@@ -192,40 +193,44 @@ a {
 					left: 0;
 					width: calc(100% - 20px);
 					padding: 10px 10px;
-					background-color: $min-color;
+					background-color: $sek-color;
+					@include bdr_bottom();
 				}
 				.main-search {
-					width: 450px;
-					height: 45px;
+					width: 500px;
+					height: 43px;
 					overflow: hidden;
-					background-color: rgba(0,0,0,0.2);
-					border-radius: 5px;
+					background-color: $sek-color;
+					border-radius: 45px;
+					@include bdr_all();
 					@media (max-width: $max-width) {
 						width: 100%;
 					}
 					&.select {
-						background-color: $sek-color;
+						background-color: rgba(225,225,225,0.34);
 						.txt {
-							background-color: #fff;
+							//background-color: rgba(225,225,225,0.34);
 							color: rgba(0,0,0,0.84);
 						}
 						.btn {
-							background-color: $sek-color;
-							color: $min-color;
+							//background-color: rgba(225,225,225,0.34);
+							color: rgba(0,0,0,0.84);
 						}
 					}
 					.txt {
-						width: calc(100% - 70px);
-						float: right;
+						width: calc(100% - 100px);
+						float: left;
 						background-color: rgba(0,0,0,0);
-						color: #f0f0f0;
+						color: rgba(0,0,0,0.54);
+						border-radius: 0;
 					}
 					.btn {
-						width: 40px;
+						width: 70px;
 						padding: 0 0;
 						float: left;
 						background-color: rgba(0,0,0,0);
-						color: #f0f0f0;
+						color: rgba(0,0,0,0.54);
+						border-radius: 0;
 					}
 				}
 			}
@@ -276,9 +281,6 @@ a {
 						position: relative;
 						top: 2.5px;
 						display: inline-block;
-						@media (max-width: $max-width) {
-							top: 5px;
-						}
 					}
 					.username {
 						position: relative;
@@ -343,8 +345,15 @@ a {
 		}
 	}
 	.post {
+		/*@include col_full();
+		@include col_masonry(4);*/
 		@include col_full();
-		@include col_masonry(4);
+		display: flex;
+	    flex-wrap: wrap;
+	    .frame-post {
+	    	width: ($col-full / 5) - 30px;
+	    	margin: 15px;
+	    }
 		@media (max-width: $max-width) {
 			@include col_masonry(1);
 		}

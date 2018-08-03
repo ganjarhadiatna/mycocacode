@@ -35,7 +35,7 @@ class MainController extends Controller
     }
     function index()
     {
-        if (Auth::id()) {
+        /*if (Auth::id()) {
             $id = Auth::id();
             $profile = FollowModel::GetAllFollowing($id);
             $topStory = StoryModel::PagTimelinesStory(20, $profile, $id);
@@ -53,7 +53,13 @@ class MainController extends Controller
                 'title' => 'Official Site',
                 'path' => 'home'
             ]);
-        }
+        }*/
+        $topStory = StoryModel::PagPopularStory(20);
+        return view('home.landing', [
+            'title' => 'Its a place for designer',
+            'path' => 'home',
+            'topStory' => $topStory
+        ]);
     }
     function collections()
     {

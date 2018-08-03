@@ -1,14 +1,15 @@
 //variable
-$col-full : 1300px/*calc(100% - 50px)*/;
+$col-full : 1300px;//calc(100% - 50px)
 $max-width : 768px;
 
 //color
-$min-color : #144753;
+$min-color : #bd081c;
 $sek-color : #fff;
 $pos-color : #529ecc;
 $del-color : #9a0000;
 $txt-min-color: rgba(0,0,0,0.84);
 $txt-sek-color: rgba(0,0,0,0.54);
+$txt-pri-color: rgba(0,0,0,0.34);
 $txt-size-title: 22px;
 $txt-size-desc: 16px;
 $txt-size-big: 32px;

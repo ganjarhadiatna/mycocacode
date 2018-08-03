@@ -2,7 +2,9 @@
 @section('title',$title)
 @section('path',$path)
 @section('content')
+
 @foreach ($getStory as $story)
+
 <script type="text/javascript">
 	var id = '{{ Auth::id() }}';
 	var server = '{{ url("/") }}';
@@ -166,158 +168,194 @@
 
 	});
 </script>
-<div class="place-story">
-	<div class="main">
-		<div class="place">
-			<div class="frame-story col-600px">
-				<div class="sc-header padding-bottom-5px">
-					<div class="sc-place no-background col-full">
-						<div class="sc-grid sc-grid-2x">
-							<div class="sc-col-1">
-								<div style="display: inline-block; vertical-align: middle;">
-									<a href="{{ url('/user/'.$story->id) }}" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
-										<div class="image image-45px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
-									</a>
-									<div class="ctn-main-font ctn-min-color ctn-16px ctn-link" style="display: inline-block; vertical-align: middle;">
-										<a href="{{ url('/user/'.$story->id) }}">
-											{{ $story->username }}
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="sc-col-2 txt-right">
-								<div>
-									<button class="icn btn btn-circle btn-primary-color" onclick="opPostPopup('open', 'menu-popup', '{{ $story->idstory }}', '{{ $story->id }}', '{{ $title }}')">
-										<span class="fa fa-lg fa-ellipsis-h"></span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="grids-2x">
-					<div class="grid-1">
-						<!--
-						<div class="mid">
-							<div class="pict padding-bottom-5px">
-								<div class="cover-pict" style="padding-bottom: {{ (($story->height / $story->width) * 100) }}%;" id="frame-img">
-									<img src="{{ asset('/story/covers/'.$story->cover) }}" id="place-img" class="pict">
-								</div>
-							</div>
-						</div>
-						@if ($story->ttl_image > 1)
-						-->
-							@foreach ($images as $img)
-								<div class="mid">
-									<div class="pict padding-bottom-5px">
-										<div class="cover-pict" style="padding-bottom: {{ (($img->height / $img->width) * 100) }}%;" id="frame-img">
-											<img src="{{ asset('/story/covers/'.$img->image) }}" id="place-img" class="pict">
-										</div>
-									</div>
-								</div>
-							@endforeach
-						<!-- @endif -->
-					</div>
-					<div class="grid-2">
-						<div class="pos mid">
-							@if ($story->description != "")
-								<div class="content ctn-main-font ctn-sans-serif padding-bottom-15px">
-									<?php echo $story->description; ?>
-								</div>
-							@endif
-							@if (count($tags) > 0)
-								<div class="padding-bottom-15px">
-									@foreach($tags as $tag)
-									<?php 
-										$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-										$title = str_replace($replace, '', $tag->tag); 
-									?>
-									<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
-										<div>{{ $tag->tag }}</div>
-									</a>
-									@endforeach
-								</div>
-							@endif
-						</div>
-						<div class="pos mid">
-							<div class="grid grid-2x padding-bottom-10px">
-								<div class="grid-1">
-									<a href="{{ url('/story/'.$story->idstory) }}">
-										<button class="btn btn-sekunder-color btn-no-border btn-pad-5px">
-											<span>{{ $story->views }}</span>
-											<span>Views</span>
-										</button>
-									</a>
-								</div>
-								<div class="grid-2 text-right crs-default">
-									<button 
-										class="btn btn-sekunder-color btn-no-border btn-pad-5px love" 
-										onclick="addLove('{{ $story->idstory }}')">
-										@if (is_int($story->is_love))
-											<span class="love-{{ $story->idstory }} fas fa-lg fa-heart"></span>
-										@else
-											<span class="love-{{ $story->idstory }} far fa-lg fa-heart"></span>
-										@endif
-										<span>{{ $story->ttl_love }}</span>
-									</button>
-									<button class="btn btn-sekunder-color btn-no-border btn-pad-5px" onclick="toComment()">
-										<span class="far fa-lg fa-comment"></span>
-										<span>{{ $story->ttl_comment }}</span>
-									</button>
-									<button class="btn btn-circle btn-sekunder-color btn-no-border save"
-										key="{{ $story->idstory }}" 
-										onclick="addBookmark('{{ $story->idstory }}')">
-										@if (is_int($story->is_save))
-											<span class="bookmark-{{ $story->idstory }} fas fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
-										@else
-											<span class="bookmark-{{ $story->idstory }} far fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
-										@endif
-										<span>{{ $story->ttl_save }}</span>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="pos bot">
-							<div class="padding-bottom-20px">
-								<div class="top-comment" id="tr-comment">
-									@if (Auth::id())
-									<form method="post" action="javascript:void(0)" id="comment-publish">
-										<div class="comment-head">
-											<div>
-												<input class="txt comment-text txt-primary-color" id="comment-description" placeholder="Type comment here.." />
-											</div>
-										</div>
-									</form>
-									@endif
-									<div class="comment-content" id="place-comment"></div>
-								</div>
-								<div class="frame-more" id="frame-more-comment">
-									<input type="hidden" name="offset" id="offset-comment" value="0">
-									<input type="hidden" name="limit" id="limit-comment" value="0">
-									<button class="btn btn-sekunder-color btn-radius" id="load-more-comment">
-										<span class="Load More Comment">Load More</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			
+<div class="frame-story">
+	<div class="top">
+		<div class="grid">
+			<div class="col-1">
+				<a href="{{ url('/user/'.$story->id) }}">
+					<div 
+					class="image image-50px image-circle" 
+					style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
+				</a>
+			</div>
+			<div class="col-2">
+				<h1 class="username ctn-main-font ctn-sek-color ctn-mikro">
+					<a href="{{ url('/user/'.$story->id) }}">
+						{{ $story->username }}
+					</a>
+				</h1>
+				<p class="ctn-main-font ctn-sek-color ctn-14px ctn-thin">
+					Published on {{ $story->created }}
+				</p>
 			</div>
 		</div>
 	</div>
-</div>
-@endforeach
-<div class="padding-20px">
-	<div>
-		<div class="post">
-			@foreach ($newStory as $story)
-				<a href="#">
-					@include('main.post')
-				</a>
-			@endforeach
+	<div class="mid">
+		<div class="grid">
+			<div class="col-1">
+				<div>
+					@if ($story->description)
+						<div class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px">
+							{{ $story->description }}
+						</div>
+					@endif
+				</div>
+
+				<div class="pict">
+					@foreach ($images as $img)
+						<div class="image" 
+							style="
+							background-image: url({{ asset('/story/covers/'.$img->image) }}); 
+							padding-bottom: {{ (($img->height / $img->width) * 100) }}%;"
+							id="frame-img">
+						</div>
+					@endforeach
+				</div>
+
+				<div>
+					<div class="top-comment" id="tr-comment">
+						@if (Auth::id())
+						<form method="post" action="javascript:void(0)" id="comment-publish">
+							<div class="comment-head padding-20px">
+								<div>
+									<input class="txt comment-text txt-primary-color" id="comment-description" placeholder="Type comment here.." />
+								</div>
+							</div>
+						</form>
+						@endif
+						<div class="comment-content" id="place-comment"></div>
+					</div>
+					<div class="frame-more" id="frame-more-comment">
+						<input type="hidden" name="offset" id="offset-comment" value="0">
+						<input type="hidden" name="limit" id="limit-comment" value="0">
+						<button class="btn btn-sekunder-color btn-radius" id="load-more-comment">
+							<span class="Load More Comment">Load More</span>
+						</button>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-2">
+				<div class="info">
+					
+					<div class="block">
+						<div class="icn love pointer" key="{{ $story->idstory }}" onclick="addLove('{{ $story->idstory }}')">
+							@if (is_int($story->is_love))
+								<span class="sh">
+									<span class="love-{{ $story->idstory }} scc fa fa-lg fa-heart"></span>
+								</span>
+							@else
+								<span class="sh">
+									<span class="love-{{ $story->idstory }} non fa fa-lg fa-heart"></span>
+								</span>
+							@endif
+							<span>Like?</span>
+						</div>
+						<div class="ctn">
+							<span>{{ $story->ttl_love }} likes</span>
+						</div>
+					</div>
+
+					<div class="block">
+						<div class="icn save pointer" key="{{ $story->idstory }}" onclick="addBookmark('{{ $story->idstory }}')">
+							@if (is_int($story->is_save))
+								<span class="sh">
+									<span class="bookmark-{{ $story->idstory }} scc fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
+								</span>
+							@else
+								<span class="sh">
+									<span class="bookmark-{{ $story->idstory }} non fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
+								</span>
+							@endif
+							<span>Save?</span>
+						</div>
+						<div class="ctn">
+							<span>{{ $story->ttl_save }} saves</span>
+						</div>
+					</div>
+
+					<div class="block">
+						<div class="icn">
+							<span class="sh fa fa-lg fa-eye"></span>
+							<span>Views</span>
+						</div>
+						<div class="ctn">
+							<span>{{ $story->views }} views</span>
+						</div>
+					</div>
+
+					<div class="block">
+						<div class="icn">
+							<span class="sh fa fa-lg fa-comment"></span>
+							<span>Talks</span>
+						</div>
+						<div class="ctn">
+							<span>{{ $story->ttl_comment }} talks</span>
+						</div>
+					</div>
+
+					<div class="block">
+						<div class="icn">
+							<span class="sh fa fa-lg fa-share-alt"></span>
+							<span>Share</span>
+						</div>
+						<div class="ctn">
+							<span class="sh fab fa-lg fa-facebook"></span>
+							<span class="sh fab fa-lg fa-pinterest"></span>
+							<span class="sh fab fa-lg fa-twitter"></span>
+							<span class="sh fab fa-lg fa-google-plus"></span>
+						</div>
+					</div>
+
+					@if (Auth::id() == $story->id)
+					<div class="block">
+						<div class="icn">
+							<span class="sh fa fa-lg fa-cog"></span>
+							<span>Option</span>
+						</div>
+						<div class="ctn">
+							<span 
+								class="sh fa fa-lg fa-pencil-alt"
+								onclick="editPost('{{ $story->idstory }}','{{ $story->id }}')"
+								></span>
+							<span 
+								class="sh fa fa-lg fa-trash-alt"
+								onclick="opQuestionPost('{{ $story->idstory }}')"
+								></span>
+						</div>
+					</div>
+					@endif
+
+				</div>
+
+				@if (count($tags) > 0)
+					<div class="info">
+						<h2 class="ctn-main-font ctn-sek-color ctn-18px">
+							Tags
+						</h2>
+						<div class="padding-15px">
+							@foreach($tags as $tag)
+							
+							<?php 
+								$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+								$title = str_replace($replace, '', $tag->tag); 
+							?>
+
+							<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
+								<div>{{ $tag->tag }}</div>
+							</a>
+							@endforeach
+						</div>
+					</div>
+				@endif
+
+			</div>
 		</div>
 	</div>
+	<div class="bot"></div>
 </div>
+
+@endforeach
+
 @endsection

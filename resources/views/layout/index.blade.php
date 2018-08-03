@@ -126,15 +126,15 @@
 				})
 				.done(function(data) {
 					if (data === 'love') {
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' fas fa-lg fa-heart');
+						$('.love-'+idstory).attr('class', 'love-'+idstory+' scc fa fa-lg fa-heart');
 					} else if (data === 'unlove') {
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' far fa-lg fa-heart');
+						$('.love-'+idstory).attr('class', 'love-'+idstory+' non fa fa-lg fa-heart');
 					} else if (data === 'failedadd') {
 						opAlert('open', 'Failed to love story.');
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' far fa-lg fa-heart');
+						$('.love-'+idstory).attr('class', 'love-'+idstory+' non fa fa-lg fa-heart');
 					} else if (data === 'failedremove') {
 						opAlert('open', 'Failed to unlove story.');
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' fas fa-lg fa-heart');
+						$('.love-'+idstory).attr('class', 'love-'+idstory+' scc fa fa-lg fa-heart');
 					} else {
 						opAlert('open', 'There is an error, please try again.');
 					}
@@ -156,15 +156,15 @@
 				})
 				.done(function(data) {
 					if (data === 'bookmark') {
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' fas fa-lg fa-bookmark');
+						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' scc fa fa-lg fa-bookmark');
 					} else if (data === 'unbookmark') {
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' far fa-lg fa-bookmark');
+						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' non fa fa-lg fa-bookmark');
 					} else if (data === 'failedadd') {
 						opAlert('open', 'Failed to save story to bookmark.');
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' far fa-lg fa-bookmark');
+						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' non fa fa-lg fa-bookmark');
 					} else if (data === 'failedremove') {
 						opAlert('open', 'Failed to remove story from bookmark.');
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' fas fa-lg fa-bookmark');
+						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' scc fa fa-lg fa-bookmark');
 					} else {
 						opAlert('open', 'There is an error, please try again.');
 					}
@@ -194,7 +194,7 @@
 				setInterval('cekNotif()', 3000);
 			}
 
-			$(window).scroll(function(event) {
+			/*$(window).scroll(function(event) {
 				var hg = $('#header').height();
 				var top = $(this).scrollTop();
 				if (top > hg) {
@@ -202,7 +202,7 @@
 				} else {
 					$('#main-search').removeClass('hide');
 				}
-			});
+			});*/
 
 			$('#txt-search').focusin(function () {
 				$('#main-search .main-search').addClass('select');
@@ -231,63 +231,56 @@
 <body>
 	<div id="header">
 		<div class="place">
-			<div class="menu col-all">
+			<div class="menu">
 				<div class="pos lef">
-					<div class="logo" >
+					<div class="logo" style="position: relative; float: left;">
 						<a href="{{ url('/') }}">
-							<img src="{{ asset('/img/5.png') }}" alt="Pictlr">
+							<img src="{{ asset('/img/7.png') }}" alt="Pictlr">
 						</a>
+					</div>
+					<div style="position: relative; float: left; top: 15px;">
+						<span>CATEGORIES</span>
+						<span class="fa fa-lg fa-angle-down"></span>
 					</div>
 				</div>
 				<div class="pos mid" id="main-search">
 					<div class="main-search bdr-all">
 						<form id="place-search" action="javascript:void(0)" method="get">
-							<button type="submit" class="btn btn-main4-color">
+							<input type="text" name="q" class="txt txt-main-color txt-no-shadow" id="txt-search" placeholder="Search.." required="true">
+							<button type="submit" class="btn btn-grey-color">
 								<span class="fa fa-lg fa-search"></span>
 							</button>
-							<input type="text" name="q" class="txt txt-main-color txt-no-shadow" id="txt-search" placeholder="Search.." required="true">
 						</form>
 					</div>
 				</div>
 				<div class="pos rig">
-					<a href="{{ url('/') }}">
-						<button class="mobile btn-icn btn btn-main2-color btn-radius" id="home">
-							<span class="ttl">Home</span>
-						</button>
-					</a>
-					<a href="{{ url('/categories') }}">
-						<button class="btn-icn btn btn-circle btn-main2-color" id="category" key="hide">
-							<span class="fas fa-lg fa-th"></span>
-						</button>
-					</a>
 					@if (!Auth::id())
 						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color">
-								<span class="fas fa-lg fa-sign-in-alt"></span>
+							<button class="btn-icn btn btn-grey-color">
+								<span>LOGIN</span>
 							</button>
 						</a>
 						<a href="{{ url('/register') }}">
-							<button class="create btn btn-radius btn-main3-color">
-								<span class="fas fa-lg fa-plus"></span>
-								<span>Register</span>
+							<button class="create btn btn-main-color">
+								<span>REGISTER</span>
 							</button>
 						</a>
 					@else
 						<a href="{{ url('/me/notifications') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
+							<button class="btn-icn btn btn-circle btn-grey-color" id="notif" key="hide">
 								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
 								<span class="fas fa-lg fa-bell"></span>
 							</button>
 						</a>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
 							<a href="{{ url('/user/'.$dt->id) }}">
-								<button class="btn-icn pp btn btn-main2-color btn-radius" id="profile">
+								<button class="btn-icn pp btn btn-grey-color btn-radius" id="profile">
 									<div class="image image-35px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});" id="profile"></div>
 								</button>
 							</a>
 						@endforeach
 						<a href="{{ url('/compose') }}">
-							<button class="create btn btn-radius btn-main3-color" id="op-add" key="hide" style="margin-left: 20px;">
+							<button class="create btn btn-radius btn-main-color" id="op-add" key="hide" style="margin-left: 20px;">
 								<span class="fas fa-lg fa-plus"></span>
 								<span>Create Story</span>
 							</button>
