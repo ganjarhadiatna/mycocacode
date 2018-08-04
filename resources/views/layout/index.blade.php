@@ -230,65 +230,88 @@
 </head>
 <body>
 	<div id="header">
-		<div class="place">
-			<div class="menu">
-				<div class="pos lef">
-					<div class="logo" style="position: relative; float: left;">
+		<div class="hc-place">
+			<div class="hc-menu">
+				<div class="col-1">
+					<div class="logo">
 						<a href="{{ url('/') }}">
-							<img src="{{ asset('/img/7.png') }}" alt="Pictlr">
+							<img src="{{ asset('/img/6.png') }}" alt="Pictlr">
 						</a>
 					</div>
-					<div style="position: relative; float: left; top: 15px;">
-						<span>CATEGORIES</span>
-						<span class="fa fa-lg fa-angle-down"></span>
-					</div>
 				</div>
-				<div class="pos mid" id="main-search">
-					<div class="main-search bdr-all">
-						<form id="place-search" action="javascript:void(0)" method="get">
-							<input type="text" name="q" class="txt txt-main-color txt-no-shadow" id="txt-search" placeholder="Search.." required="true">
-							<button type="submit" class="btn btn-grey-color">
-								<span class="fa fa-lg fa-search"></span>
-							</button>
-						</form>
-					</div>
+				<div class="col-2">
+					<ul class="hc-list">
+					    <a href="">
+					    	<li>
+					    		Coffee
+					    	</li>
+					    </a>
+					    <a href="">
+					    	<li>
+					    		Tea
+					    	</li>
+					    </a>
+					    <a href="">
+					    	<li>
+					    		Milk
+					    	</li>
+					    </a>
+					    <a href="">
+					    	<li>
+					    		Cocoa
+					    	</li>
+					    </a>
+					    <a href="">
+					    	<li>
+					    		All <span class="fa fa-lg fa-angle-down"></span>
+					    	</li>
+					    </a>
+					</ul>
 				</div>
-				<div class="pos rig">
+				<div class="col-3">
 					@if (!Auth::id())
 						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-grey-color">
+							<button class="btn-icn btn btn-sekunder-color btn-no-border">
 								<span>LOGIN</span>
 							</button>
 						</a>
-						<a href="{{ url('/register') }}">
+						<a href="{{ url('/register') }}" style="margin-left: 5px;">
 							<button class="create btn btn-main-color">
 								<span>REGISTER</span>
 							</button>
 						</a>
 					@else
 						<a href="{{ url('/me/notifications') }}">
-							<button class="btn-icn btn btn-circle btn-grey-color" id="notif" key="hide">
+							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide" style="margin-right: 5px;">
 								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
 								<span class="fas fa-lg fa-bell"></span>
 							</button>
 						</a>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
 							<a href="{{ url('/user/'.$dt->id) }}">
-								<button class="btn-icn pp btn btn-grey-color btn-radius" id="profile">
-									<div class="image image-35px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});" id="profile"></div>
+								<button class="btn-pp btn btn-circle btn-main2-color btn-radius" id="profile">
+									<div 
+										class="image image-30px image-circle"
+										style="
+											background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});
+											margin: auto;"
+										id="profile"></div>
 								</button>
 							</a>
 						@endforeach
 						<a href="{{ url('/compose') }}">
 							<button class="create btn btn-radius btn-main-color" id="op-add" key="hide" style="margin-left: 20px;">
 								<span class="fas fa-lg fa-plus"></span>
-								<span>Create Story</span>
+								<span>Create Design</span>
 							</button>
 						</a>
 					@endif
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="body">
 		<!--
 		<div class="zoom-pict" id="zoom-pict">
 			<button class="close btn btn-circle btn-main2-color" id="close-zoom">
@@ -297,18 +320,19 @@
 			<div class="zp-main"></div>
 		</div>
 		-->
-	</div>
-	<div id="body">
 		<div class="frame-loading-circle" id="frame-loading-circle">
 			<div class="icn btn btn-circle btn-normal-color">
 				<div class="tr fas fa-lg fa-spin fa-circle-notch"></div>
 			</div>
 		</div>
 		@yield("content")
+
+		@include('main.loading-bar')
+		@include('main.post-menu')
+		@include('main.question-menu')
+		@include('main.alert-menu')
+
 	</div>
-	@include('main.loading-bar')
-	@include('main.post-menu')
-	@include('main.question-menu')
-	@include('main.alert-menu')
+	<div id="footer"></div>
 </body>
 </html>
