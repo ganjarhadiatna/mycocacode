@@ -22,122 +22,129 @@
 	});
 </script>
 @endif
-<div>
-	<div class="post-home post-grid post-grid-2x">
-		<div class="lef post-grid-1" id="home-main-object">
-			<div class="place-notif">
-				<div class="ttl-head padding-bottom-15px">
-					<div class="ctn-main-font ctn-min-color ctn-16px">Notifications</div>
+<div class="sc-header bdr-bottom-mobile">
+	<div class="sc-place pos-fix">
+		<div class="col-full">
+			<div class="sc-grid sc-grid-1x">
+				<div class="sc-col-2">
+					<h2 class="ttl-head ttl-sekunder-color">
+						Notifications
+					</h2>
 				</div>
-				@foreach ($notif as $dt)
-					@if ($dt->type == 'comment' || $dt->type == 'like')
-						<div class="frame-notif grid grid-3x">
-							<div class="grid-1">
-								<a href="{{ url('/user/'.$dt->id) }}">
-									<div 
-										class="image image-40px image-radius"
-										style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
-								</a>
-							</div>
-							<div class="grid-2">
-								<div class="notif-mid">
-									<div class="ntf-mid">
-										<div class="desc">
-											<a href="{{ url('/user/'.$dt->id) }}">
-												<strong>
-													{{ $dt->username }}
-												</strong>
-											</a>
-											{{ 'commented "'.$dt->description.'" on your story' }}
-										</div>
-										<div class="desc date">
-											{{ $dt->created }}
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="grid-3 txt-right">
-								<a href="{{ url('/story/'.$dt->idstory) }}">
-									<div 
-										class="image image-40px image-radius"
-										style="background-image: url({{ asset('/story/thumbnails/'.$dt->image) }});"></div>
-								</a>
-							</div>
-						</div>
-					@elseif ($dt->type == 'follow')
-						<div class="frame-notif grid grid-2x">
-							<div class="grid-1">
-								<a href="{{ url('/user/'.$dt->id) }}">
-									<div 
-										class="image image-40px image-radius"
-										style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
-								</a>
-							</div>
-							<div class="grid-2">
-								<div class="notif-mid">
-									<div class="ntf-mid">
-										<div class="desc">
-											<a href="{{ url('/user/'.$dt->id) }}">
-												<strong>
-													{{ $dt->username }}
-												</strong>
-											</a>
-											started following you
-										</div>
-										<div class="desc date">
-											{{ $dt->created }}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					@else
-						<div class="frame-notif grid grid-3x">
-							<div class="grid-1">
-								<a href="{{ url('/user/'.$dt->id) }}">
-									<div 
-										class="image image-40px image-radius"
-										style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
-								</a>
-							</div>
-							<div class="grid-2">
-								<div class="notif-mid">
-									<div class="ntf-mid">
-										<div class="desc">
-											<a href="{{ url('/user/'.$dt->id) }}">
-												<strong>
-													{{ $dt->username }}
-												</strong>
-											</a>
-											@if ($dt->type == 'love')
-												like your story
-											@else
-												save your story
-											@endif
-										</div>
-										<div class="desc date">
-											{{ $dt->created }}
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="grid-3 txt-right">
-								<a href="{{ url('/story/'.$dt->idstory) }}">
-									<div 
-										class="image image-40px image-radius"
-										style="background-image: url({{ asset('/story/thumbnails/'.$dt->image) }});"></div>
-								</a>
-							</div>
-						</div>
-					@endif
-				@endforeach
 			</div>
-			<div class="padding-5px"></div>
+		</div>
+	</div>
+</div>
+<div class="frame-home">
+	<div class="place-notif">
+
+		@foreach ($notif as $dt)
+			@if ($dt->type == 'comment' || $dt->type == 'like')
+				<div class="frame-notif grid grid-3x">
+					<div class="grid-1">
+						<a href="{{ url('/user/'.$dt->id) }}">
+							<div 
+								class="image image-40px image-radius"
+								style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
+						</a>
+					</div>
+					<div class="grid-2">
+						<div class="notif-mid">
+							<div class="ntf-mid">
+								<div class="desc">
+									<a href="{{ url('/user/'.$dt->id) }}">
+										<strong>
+											{{ $dt->username }}
+										</strong>
+									</a>
+									{{ 'commented "'.$dt->description.'" on your story' }}
+								</div>
+								<div class="desc date">
+									{{ $dt->created }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="grid-3 txt-right">
+						<a href="{{ url('/story/'.$dt->idstory) }}">
+							<div 
+								class="image image-40px image-radius"
+								style="background-image: url({{ asset('/story/thumbnails/'.$dt->image) }});"></div>
+						</a>
+					</div>
+				</div>
+			@elseif ($dt->type == 'follow')
+				<div class="frame-notif grid grid-2x">
+					<div class="grid-1">
+						<a href="{{ url('/user/'.$dt->id) }}">
+							<div 
+								class="image image-40px image-radius"
+								style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
+						</a>
+					</div>
+					<div class="grid-2">
+						<div class="notif-mid">
+							<div class="ntf-mid">
+								<div class="desc">
+									<a href="{{ url('/user/'.$dt->id) }}">
+										<strong>
+											{{ $dt->username }}
+										</strong>
+									</a>
+									started following you
+								</div>
+								<div class="desc date">
+									{{ $dt->created }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			@else
+				<div class="frame-notif grid grid-3x">
+					<div class="grid-1">
+						<a href="{{ url('/user/'.$dt->id) }}">
+							<div 
+								class="image image-40px image-radius"
+								style="background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});"></div>
+						</a>
+					</div>
+					<div class="grid-2">
+						<div class="notif-mid">
+							<div class="ntf-mid">
+								<div class="desc">
+									<a href="{{ url('/user/'.$dt->id) }}">
+										<strong>
+											{{ $dt->username }}
+										</strong>
+									</a>
+									@if ($dt->type == 'love')
+										like your story
+									@else
+										save your story
+									@endif
+								</div>
+								<div class="desc date">
+									{{ $dt->created }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="grid-3 txt-right">
+						<a href="{{ url('/story/'.$dt->idstory) }}">
+							<div 
+								class="image image-40px image-radius"
+								style="background-image: url({{ asset('/story/thumbnails/'.$dt->image) }});"></div>
+						</a>
+					</div>
+				</div>
+			@endif
+		@endforeach
+
+		<div class="padding-bottom-15px">
 			{{ $notif->links() }}
 		</div>
-		<div class="rig post-grid-2">
-			@include('main.side-menu')
-		</div>
+
 	</div>
 </div>
 @endsection

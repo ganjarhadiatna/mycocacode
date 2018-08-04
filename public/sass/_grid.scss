@@ -29,6 +29,10 @@
 @mixin grid_none() {
 	display: block;
 }
+@mixin column_n($x) {
+	grid-column: $x;
+	-ms-grid-column: $x;
+}
 @mixin column_1() {
 	grid-column: 1;
 	-ms-grid-column: 1;

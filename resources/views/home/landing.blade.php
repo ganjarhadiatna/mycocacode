@@ -39,7 +39,9 @@
 					@include('main.post')
 				@endforeach
 			</div>
-			{{ $topStory->links() }}
+			<div class="padding-bottom-15px">
+				{{ $topStory->links() }}
+			</div>
 		@endif
 	</div>
 </div>

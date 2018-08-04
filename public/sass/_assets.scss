@@ -1,6 +1,7 @@
 //variable
 $col-full : 1300px;//calc(100% - 50px)
-$max-width : 768px;
+$max-width : 800px;
+$min-width : 400px;
 
 //color
 $min-color : #bd081c;
@@ -43,7 +44,21 @@ $txt-size-small: 14px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	   -moz-transform: translate(-50%, -50%);
+		    -ms-transform: translate(-50%, -50%);
+		     -o-transform: translate(-50%, -50%);
+		        transform: translate(-50%, -50%);
+}
+@mixin post_center_relative() {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	   -moz-transform: translate(-50%, -50%);
+		    -ms-transform: translate(-50%, -50%);
+		     -o-transform: translate(-50%, -50%);
+		        transform: translate(-50%, -50%);
 }
 @mixin post_fixed() {
 	position: fixed;
