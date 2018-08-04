@@ -22,7 +22,7 @@
 					@include('main.post')
 				@endforeach
 			</div>
-			<div class="padding-bottom-15px">
+			<div>
 				{{ $topStory->links() }}
 			</div>
 		@endif

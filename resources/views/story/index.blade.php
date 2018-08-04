@@ -330,6 +330,7 @@
 				</div>
 
 				@if (count($tags) > 0)
+					<div class="padding-10px"></div>
 					<div class="info">
 						<h2 class="ctn-main-font ctn-sek-color ctn-18px">
 							Tags
