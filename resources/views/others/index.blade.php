@@ -2,7 +2,7 @@
 @section('title',$title)
 @section('path', $path)
 @section('content')
-<div class="padding-10px"></div>
+<div class="padding-bottom-15px"></div>
 <div class="sc-header">
 	<div class="sc-place">
 		<div class="sc-block">

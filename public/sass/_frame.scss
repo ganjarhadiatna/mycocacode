@@ -516,6 +516,11 @@
 	//margin-top: 50px;
 	//margin-bottom: 50px;
 
+	@media (max-width: $max-width) {
+		width: calc(100% - 20px);
+		padding: 15px 10px;
+	}
+
 	.top {
 		position: relative;
 		width: 100%;
@@ -537,6 +542,9 @@
 	.mid {
 		.grid {
 			@include grid_2x(1fr, 350px);
+			@media (max-width: $max-width) {
+				@include grid_none();
+			}
 			.col-1 {
 				@include column_1();
 			}
@@ -544,6 +552,10 @@
 				@include column_2();
 				width: calc(100% - 50px);
 				padding: 0 25px;
+				@media (max-width: $max-width) {
+					width: calc(100%);
+					padding: 0 0;
+				}
 			}
 		}
 		.pict {

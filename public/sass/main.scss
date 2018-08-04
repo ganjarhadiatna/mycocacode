@@ -151,6 +151,9 @@ a {
 	position: relative;
 	width: 100%;
 	height: 55px;
+	@media (max-width: $max-width) {
+		height: 100px;
+	}
 	.hc-place {
 		position: fixed;
 		top: 0;
@@ -159,24 +162,45 @@ a {
 		height: 55px;
 		background-color: #333;
 		z-index: 100;
-		@include bdr_bottom();
 		.hc-menu {
 			position: relative;
 			//width: calc(100% - 30px);
 			//padding: 7.5px 15px;
+
 			width: $col-full;
 			padding: 7.5px 0;
 			margin: auto;
-			@include grid_3x(1fr, 1fr, 1fr);
-			.col-1 {
-				@include column_1();
+
+			@media (max-width: $max-width) {
+				width: calc(100% - 20px);
 			}
+
+			@include grid_3x(1fr, 1fr, 1fr);
+			
+			@media (max-width: $max-width) {
+				@include grid_2x(120px, 1fr);
+			}
+
+			.col-1 {
+				@include column_n(1);
+			}
+
 			.col-2 {
-				@include column_2();
+				@include column_n(2);
+				@media (max-width: $max-width) {
+					position: fixed;
+					top: 55px;
+					left: 0;
+					width: 100%;
+					background-color: #333;
+				}
 			}
 			.col-3 {
-				@include column_3();
+				@include column_n(3);
 				text-align: right;
+				@media (max-width: $max-width) {
+					@include column_n(2);
+				}
 			}
 			.logo {
 				position: relative;
@@ -197,17 +221,35 @@ a {
 			.create {
 				display: inline-block;
 				vertical-align: top;
+				@media (max-width: $max-width) {
+					width: 40px;
+					height: 40px;
+					padding: 0 0;
+				}
+				@media (max-width: $min-width) {
+					position: fixed;
+					right: 10px;
+					bottom: 10px;
+					z-index: 100;
+					width: 45px;
+					height: 45px;
+				}
+				.ttl {
+					@media (max-width: $max-width) {
+						display: none;
+					}
+				}
 			}
 		}
 		.hc-list {
 			position: relative;
 			width: 100%;
-			height: 40px;
+			height: 45px;
 			text-align: center;
 			overflow: hidden;
 			li {
 				position: relative;
-				height: 40px;
+				height: 45px;
 				
 				width: 25%;
 				padding: 12.5px 0;
@@ -283,6 +325,9 @@ a {
 			margin: auto;
 			width: 400px;
 			padding: 15px 0;
+			@media (max-width: $min-width) {
+				width: 100%;
+			}
 		}
 	}
 	.post-home {
@@ -374,6 +419,11 @@ a {
 		margin: auto;
 		@include grid_4x(500px, 1fr, 1fr, 1fr);
 
+		@media (max-width: $max-width) {
+			width: 100%;
+			@include grid_none();
+		}
+
 		.ft-col {
 			position: relative;
 			width: calc(100% - 30px);
@@ -384,6 +434,9 @@ a {
 			color: $txt-sek-color;
 			font-size: 24px;
 			padding-bottom: 10px;
+			@media (max-width: $max-width) {
+				padding: 10px 0;
+			}
 		}
 
 		p {

@@ -258,7 +258,7 @@
 					    </a>
 					    <a href="">
 					    	<li>
-					    		Others <span class="fa fa-lg fa-angle-down"></span>
+					    		All <span class="fa fa-lg fa-angle-down"></span>
 					    	</li>
 					    </a>
 					</ul>
@@ -297,7 +297,7 @@
 						<a href="{{ url('/compose') }}">
 							<button class="create btn btn-radius btn-main-color" id="op-add" key="hide" style="margin-left: 20px;">
 								<span class="fas fa-lg fa-plus"></span>
-								<span>Create Design</span>
+								<span class="ttl">Create Design</span>
 							</button>
 						</a>
 					@endif

@@ -192,15 +192,15 @@
 		</div>
 	</div>
 	<div class="mid">
+		<div>
+			@if ($story->description)
+				<div class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px">
+					{{ $story->description }}
+				</div>
+			@endif
+		</div>
 		<div class="grid">
 			<div class="col-1">
-				<div>
-					@if ($story->description)
-						<div class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px">
-							{{ $story->description }}
-						</div>
-					@endif
-				</div>
 
 				<div class="pict">
 					@foreach ($images as $img)

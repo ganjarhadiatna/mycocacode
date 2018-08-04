@@ -269,13 +269,31 @@
 	box-shadow: 0 0 0 1px rgba(225,225,225,0.54);
 	background-color: $sek-color;
 
+	@media (max-width: $max-width) {
+		width: calc(100% - 20px);
+		padding: 20px 10px;
+	}
+
 	.cmp-main {
 		@include grid_2x(320px, 1fr);
 
+		@media (max-width: $max-width) {
+			@include grid_none();
+		}
+
 		.cmp-col-1 {
 			position: relative;
+			
 			width: 300px;
+			
 			@include column_n(1);
+
+			@media (max-width: $max-width) {
+				width: 100%;
+				padding-bottom: 20px;
+				margin-bottom: 10px;
+				@include bdr_bottom();
+			}
 
 			.lbl-add-pict {
 				position: relative;
@@ -287,8 +305,13 @@
 			.pl-add {
 				@include post_center_relative();
 				width: 200px;
+				
+				@media (max-width: $max-width) {
+					@include post_none();
+				}
+
 				.warn {
-					padding: 10px 0;
+					padding-bottom: 5px;
 					display: none;
 				}
 			}
