@@ -21,25 +21,35 @@ class StoryController extends Controller
 	}
     function story($id)
     {
-        StoryModel::UpdateViewsStory($id);
-        $iduserMe = Auth::id();
-        $iduser = StoryModel::GetIduser($id);
-        $getStory = StoryModel::GetStory($id);
-        $newStory = StoryModel::PagRelatedStory(20, $id);
-        $tags = TagModel::GetTags($id);
-        $statusFolow = FollowModel::Check($iduser, $iduserMe);
-        $check = BookmarkModel::Check($id, $iduserMe);
-        $images = ImageModel::GetAllImage($id);
-        return view('story.index', [
-            'title' => 'Story',
-            'path' => 'none',
-            'getStory' => $getStory,
-            'newStory' => $newStory,
-            'tags' => $tags,
-            'check' => $check,
-            'statusFolow' => $statusFolow,
-            'images' => $images
-        ]);
+        $rest = StoryModel::CheckStory($id);
+        if (is_int($rest)) {
+            StoryModel::UpdateViewsStory($id);
+
+            $iduserMe = Auth::id();
+            $iduser = StoryModel::GetIduser($id);
+            $getStory = StoryModel::GetStory($id);
+            $newStory = StoryModel::PagRelatedStory(20, $id);
+            $tags = TagModel::GetTags($id);
+            $statusFolow = FollowModel::Check($iduser, $iduserMe);
+            $check = BookmarkModel::Check($id, $iduserMe);
+            $images = ImageModel::GetAllImage($id);
+            return view('story.index', [
+                'title' => 'Story',
+                'path' => 'none',
+                'getStory' => $getStory,
+                'newStory' => $newStory,
+                'tags' => $tags,
+                'check' => $check,
+                'statusFolow' => $statusFolow,
+                'images' => $images
+            ]);
+        } else {
+            return view('404', [
+                'title' => '404 Not Found',
+                'path' => 'none'
+            ]);
+        }
+
     }
     function storyEdit($idstory, $iduser, $token)
     {

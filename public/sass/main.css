@@ -1191,6 +1191,21 @@
   width: 150px;
   padding: 0 0; }
 
+.frame-404 {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  text-align: center; }
+  .frame-404 .ttl {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
 /*zoom pict*/
 .zoom-pict {
   position: fixed;

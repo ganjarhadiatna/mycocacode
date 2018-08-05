@@ -1038,3 +1038,13 @@
 	width: 150px;
 	padding: 0 0;
 }
+
+.frame-404 {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	text-align: center;
+	.ttl {
+		@include post_center_relative();
+	}
+}

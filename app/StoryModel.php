@@ -38,6 +38,12 @@ class StoryModel extends Model
         ->where('story.id', $id)
         ->delete();
     }
+    function scopeCheckStory($query, $idstory)
+    {
+        return DB::table('story')
+        ->where('story.idstory', $idstory)
+        ->value('story.idstory');
+    }
     function scopeUpdateViewsStory($query, $idstory)
     {
         $no = (DB::table('story')->where('idstory', $idstory)->value('views'))+1;

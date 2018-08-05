@@ -12,6 +12,12 @@
 */
 
 //Route::get('/image/all', 'MainController@imageAll');
+Route::get('*', function () {
+    return view('404', [
+        'title' => '404 Not Found',
+        'path' => 'none'
+    ]);
+});
 Route::get('/', 'MainController@index');
 Route::get('/test', 'MainController@test');
 Route::get('/home', 'MainController@index');
@@ -42,6 +48,7 @@ Route::post('/loves/add', 'StoryController@addLoves');
 Route::get('/get/comment/{idstory}/{offset}/{limit}', 'CommentController@get')->where(['idstory' => '[0-9]+']);
 
 Auth::routes();
+
 Route::middleware('auth')->group(function() {
     /*user*/
     Route::get('/user/{iduser}/following', 'FollowController@following')->where(['iduser' => '[0-9]+']);
