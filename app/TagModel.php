@@ -52,7 +52,7 @@ class TagModel extends Model
         ->groupBy('tag')
         ->having('ttl_tag','>=','1')
         ->orderBy('tag', 'asc')
-        ->limit(35)
+        ->limit(30)
         ->get();
     }
     function scopeTopSmallTags($query)

@@ -2246,6 +2246,7 @@ a {
         grid-column: 1;
         -ms-grid-column: 1; }
       #header .hc-place .hc-menu .col-2 {
+        position: relative;
         grid-column: 2;
         -ms-grid-column: 2; }
         @media (max-width: 800px) {
@@ -2317,6 +2318,46 @@ a {
         color: rgba(225, 225, 225, 0.84); }
         #header .hc-place .hc-list li:hover {
           color: #fff; }
+    #header .hc-place #all-ctr:hover {
+      cursor: pointer; }
+      #header .hc-place #all-ctr:hover #pl-ctr {
+        display: block; }
+    #header .hc-place #pl-ctr {
+      display: none; }
+    #header .hc-place .ctr {
+      position: fixed;
+      left: 0;
+      top: 40px;
+      width: 100%;
+      max-height: 300px;
+      padding: 20px 0;
+      background-color: #333;
+      text-align: left;
+      cursor: default; }
+      #header .hc-place .ctr .place-ctr {
+        position: relative;
+        width: 1300px;
+        margin: auto;
+        column-count: 6;
+        column-gap: 0;
+        -webkit-column-count: 6;
+        -webkit-column-gap: 0;
+        -moz-column-count: 6;
+        -moz-column-gap: 0;
+        -ms-column-count: 6;
+        -ms-column-gap: 0; }
+      #header .hc-place .ctr .tag {
+        position: relative;
+        width: 100%;
+        padding: 5px 0;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: none; }
+        #header .hc-place .ctr .tag a {
+          color: #fff; }
+          #header .hc-place .ctr .tag a:hover {
+            text-decoration: underline; }
 
 #main-search {
   position: relative;

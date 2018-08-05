@@ -192,6 +192,7 @@ a {
 			}
 
 			.col-2 {
+				position: relative;
 				@include column_n(2);
 				@media (max-width: $max-width) {
 					position: fixed;
@@ -272,6 +273,57 @@ a {
 				color: rgba(225,225,225,0.84);
 				&:hover {
 					color: #fff;
+				}
+			}
+		}
+		#all-ctr {
+			&:hover {
+				cursor: pointer;
+				#pl-ctr {
+					display: block;
+				}
+			}
+		}
+		#pl-ctr {
+			display: none;
+		}
+		.ctr {
+			position: fixed;
+			left: 0;
+			top: 40px;
+
+			width: 100%;
+			max-height: 300px;
+
+			padding: 20px 0;
+
+			background-color: #333;
+
+			text-align: left;
+			cursor: default;
+
+			.place-ctr {
+				position: relative;
+				width: $col-full;
+				margin: auto;
+				@include col_masonry(6);
+			}
+			.tag {
+				position: relative;
+				width: 100%;
+				padding: 5px 0;
+				display: block;
+						
+				font-size: 14px;
+				font-weight: 600;
+
+				text-transform: none;
+
+				a {
+					color: #fff;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}

@@ -1,4 +1,5 @@
 <?php use App\ProfileModel; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -193,16 +194,6 @@
 				setInterval('cekNotif()', 3000);
 			}
 
-			/*$(window).scroll(function(event) {
-				var hg = $('#header').height();
-				var top = $(this).scrollTop();
-				if (top > hg) {
-					$('#main-search').addClass('hide');
-				} else {
-					$('#main-search').removeClass('hide');
-				}
-			});*/
-
 			$('#txt-search').focusin(function () {
 				$('#main-search .main-search').addClass('select');
 			}).focusout(function () {
@@ -255,12 +246,16 @@
 					    		Popular
 					    	</li>
 					    </a>
-					    <a href="">
-					    	<li>
-					    		All <span class="fa fa-lg fa-angle-down"></span>
-					    	</li>
-					    </a>
+					    
+					    <li id="all-ctr">
+					    	All <span class="fa fa-lg fa-angle-down"></span>
+					    	<div id="pl-ctr">
+							    @include('main.ctr')
+							</div>
+					    </li>
+
 					</ul>
+					
 				</div>
 				<div class="col-3">
 					<a href="{{ url('/search') }}">
