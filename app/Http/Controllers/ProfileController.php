@@ -14,6 +14,7 @@ use App\TagModel;
 
 class ProfileController extends Controller
 {
+    //view landing page
 	function profile()
     {
         $id = Auth::id();
@@ -67,23 +68,36 @@ class ProfileController extends Controller
             'statusFolow' => $statusFolow
         ]);
 	}
+
+    //view setting
 	function profileSetting()
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.setting', [
+        return view('profile.edit.profile-picture', [
             'title' => 'Profile Setting',
-            'path' => 'profile',
+            'path' => 'profile-picture',
             'profile' => $profile
         ]);
     }
-    function profileSettingProfile()
+
+    function profileSettingInfoPublic()
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.edit', [
+        return view('profile.edit.info-public', [
             'title' => 'Edit Profile',
-            'path' => 'profile',
+            'path' => 'public-informations',
+            'profile' => $profile
+        ]);
+    }
+    function profileSettingInfoPrivate()
+    {
+        $id = Auth::id();
+        $profile = ProfileModel::UserData($id);
+        return view('profile.edit.info-private', [
+            'title' => 'Edit Profile',
+            'path' => 'private-informations',
             'profile' => $profile
         ]);
     }
@@ -91,12 +105,14 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.password', [
+        return view('profile.edit.password', [
             'title' => 'Change Password',
-            'path' => 'profile',
+            'path' => 'change-password',
             'profile' => $profile
         ]);
     }
+
+    //save setting
     function savePassword(Request $request)
     {
         $id = Auth::id();
@@ -117,62 +133,88 @@ class ProfileController extends Controller
             echo "false";
         }
     }
-    function saveProfile(Request $request)
+    function savePublicInformations(Request $request)
     {
-    	$id = Auth::id();
-    	$foto = $request['foto'];
-    	$name = $request['name'];
+        $id = Auth::id();
+
+        $name = $request['name'];
         $username = $request['username'];
-    	$email = $request['email'];
-    	$about = $request['about'];
-    	$website = $request['website'];
+        $about = $request['about'];
+        $website = $request['website'];
 
-    	if ($request->hasFile('foto')) {
-    		//setting foto profile
-	    	$this->validate($request, [
-	    		'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-	    	]);
+        $data = array(
+            'name' => $name,
+            'username' => $username,
+            'about' => $about,
+            'website' => $website
+        );
 
-    		$image = $request->file('foto');
+        $rest = ProfileModel::EditProfile($id, $data);
+        if ($rest) {
+            echo "success"; 
+        } else {
+            echo "failed";
+        }
+    }
+    function savePrivateInformations(Request $request)
+    {
+        $id = Auth::id();
 
-    		$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-		    $filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
+        $email = $request['email'];
+        $phone_number = $request['phone_number'];
+        $gender = $request['gender'];
 
-		    //create thumbnail
-		    $destination = public_path('profile/thumbnails/'.$filename);
-		    $img = Image::make($image->getRealPath());
-		    $img->resize(200, 200, function ($constraint) {
-		    	$constraint->aspectRatio();
-		    })->save($destination);
+        $data = array(
+            'email' => $email,
+            'phone_number' => $phone_number,
+            'gender' => $gender
+        );
 
-		    //create image real
-		    $destination = public_path('profile/photos/');
-		    $image->move($destination, $filename);	
+        $rest = ProfileModel::EditProfile($id, $data);
+        if ($rest) {
+            echo "success"; 
+        } else {
+            echo "failed";
+        }
+    }
+    function saveProfilePicture(Request $request)
+    {
+        $id = Auth::id();
+        $foto = $request['foto'];
+        if ($request->hasFile('foto')) {
+            //setting foto profile
+            $this->validate($request, [
+                'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
+            ]);
 
-		    //set array data
-		    $data = array(
-		    	'name' => $name,
-                'username' => $username,
-		    	'email' => $email,
-		    	'about' => $about,
-		    	'foto' => $filename,
-		    	'website' => $website
-		    );
-    	} else {
-    		//set array data
-		    $data = array(
-		    	'name' => $name,
-                'username' => $username,
-		    	'email' => $email,
-		    	'about' => $about,
-		    	'website' => $website
-		    );
-    	}
-	    $rest = ProfileModel::EditProfile($id, $data);
-	    if ($rest) {
-	    	echo "success";	
-	    } else {
-	    	echo "failed";
-	    }
+            $image = $request->file('foto');
+
+            $chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+            $filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
+
+            //create thumbnail
+            $destination = public_path('profile/thumbnails/'.$filename);
+            $img = Image::make($image->getRealPath());
+            $img->resize(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destination);
+
+            //create image real
+            $destination = public_path('profile/photos/');
+            $image->move($destination, $filename); 
+
+            //set array data
+            $data = array(
+                'foto' => $filename,
+            );
+            $rest = ProfileModel::EditProfile($id, $data);
+            if ($rest) {
+                echo "success"; 
+            } else {
+                echo "failed";
+            }
+        } else {
+            echo 'no-file';
+        }
     }
 }

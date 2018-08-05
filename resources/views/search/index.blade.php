@@ -3,18 +3,21 @@
 @section('path', $path)
 @section('content')
 
-@if (count($topTags) != 0)
-<div class="sc-header">
-	<div class="sc-place pos-fix">
-		<div>
-			<div class="place-search-tag col-full">
-				<div class="st-lef">
-					<div class="btn btn-circle btn-sekunder-color btn-no-border" onclick="toLeft()">
-						<span class="fa fa-lg fa-angle-left"></span>
-					</div>
-				</div>
-				<div class="st-mid" id="ctnTag">
-					@foreach ($topTags as $tag)
+<div class="col-700px padding-20px">
+	<form action="javascript:void" method="get" id="place-search">
+		<div class="place-search">
+			<input type="text" name="q" class="txt-search" id="txt-search" placeholder="Search designs.." required="true" value="{{ $ctr }}">
+			<button type="submit" class="btn-search">
+				<span class="fa fa-lg fa-search"></span>
+			</button>
+		</div>
+	</form>
+
+	@if (!empty($ctr))
+
+		@if (count($topTags) != 0)
+			<div class="padding-top-20px">
+				@foreach ($topTags as $tag)
 					<?php 
 						$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
 						$title = str_replace($replace, '', $tag->tag); 
@@ -24,20 +27,34 @@
 							{{ $tag->tag }}
 						</div>
 					</a>
-					@endforeach 
-				</div>
-				<div class="st-rig">
-					<div class="btn btn-circle btn-sekunder-color btn-no-border" onclick="toRight()">
-						<span class="fa fa-lg fa-angle-right"></span>
-					</div>
-				</div>
+				@endforeach 
 			</div>
-		</div>
-	</div>
-</div>
-@endif
+		@endif
 
-<div>
+	@else
+
+		@if (count($trendingTags) != 0)
+			<div class="padding-top-20px">
+				<h3 class="ctn-main-font ctn-sek-color ctn-16px padding-10px">Trending Nows</h3>
+				@foreach ($trendingTags as $tag)
+					<?php 
+						$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+						$title = str_replace($replace, '', $tag->tag); 
+					?>
+					<a href="{{ url('/tags/'.$title) }}">
+						<div class="frame-top-tag">
+							{{ $tag->tag }}
+						</div>
+					</a>
+				@endforeach 
+			</div>
+		@endif
+
+	@endif
+</div>
+
+@if (!empty($ctr))
+
 	@if (count($topStory) == 0)
 		@include('main.post-empty')	
 	@else
@@ -48,5 +65,7 @@
 		</div>
 		{{ $topStory->links() }}
 	@endif
-</div>
+
+@endif
+
 @endsection

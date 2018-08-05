@@ -53,10 +53,19 @@ Route::middleware('auth')->group(function() {
 	Route::get('/me', 'ProfileController@profile');
     Route::get('/me/notifications', 'NotifController@notifications');
     Route::get('/me/setting', 'ProfileController@profileSetting');
+    
     Route::get('/me/setting/profile', 'ProfileController@profileSettingProfile');
+
+    Route::get('/me/setting/info/public', 'ProfileController@profileSettingInfoPublic');
+    Route::get('/me/setting/info/private', 'ProfileController@profileSettingInfoPrivate');
+
     Route::get('/me/setting/password', 'ProfileController@profileSettingPassword');
+
     Route::get('/timelines', 'MainController@timelines');
-    Route::post('/save/profile', 'ProfileController@saveProfile');
+
+    Route::post('/save/publicInformations', 'ProfileController@savePublicInformations');
+    Route::post('/save/privateInformations', 'ProfileController@savePrivateInformations');
+    Route::post('/save/profilePicture', 'ProfileController@saveProfilePicture');
     Route::post('/save/password', 'ProfileController@savePassword');
 
     /*compose*/

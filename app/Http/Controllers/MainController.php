@@ -170,16 +170,30 @@ class MainController extends Controller
         } else {
             $id = 0;
         }
-        $topStory = StoryModel::PagSearchStory($ctr, 20);
-        $topUsers = ProfileModel::SearchUsers($ctr, $id);
-        $topTags = TagModel::SearchTags($ctr);
-        return view('search.index', [
-            'title' => $ctr,
-            'path' => 'home-search',
-            'topStory' => $topStory,
-            'topUsers' => $topUsers,
-            'topTags' => $topTags
-        ]);
+        if (!empty($ctr)) {
+            //$ctr = $_GET['q'];
+
+            $topStory = StoryModel::PagSearchStory($ctr, 20);
+            $topUsers = ProfileModel::SearchUsers($ctr, $id);
+            $topTags = TagModel::SearchTags($ctr);
+            return view('search.index', [
+                'title' => $ctr,
+                'ctr' => $ctr,
+                'path' => 'home-search',
+                'topStory' => $topStory,
+                'topUsers' => $topUsers,
+                'topTags' => $topTags
+            ]);
+
+        } else {
+            $trendingTags = TagModel::TopSmallTags();
+            return view('search.index', [
+                'title' => 'Search',
+                'ctr' => '',
+                'path' => 'home-search',
+                'trendingTags' => $trendingTags
+            ]);
+        }
     }
     function searchNormal()
     {
@@ -188,17 +202,30 @@ class MainController extends Controller
         } else {
             $id = 0;
         }
-        $ctr = $_GET['q'];
-        $topStory = StoryModel::PagSearchStory($ctr, 20);
-        $topUsers = ProfileModel::SearchUsers($ctr, $id);
-        $topTags = TagModel::SearchTags($ctr);
-        return view('search.index', [
-            'title' => $ctr,
-            'path' => 'home-search',
-            'topStory' => $topStory,
-            'topUsers' => $topUsers,
-            'topTags' => $topTags
-        ]);
+        if (isset($_GET['q'])) {
+            $ctr = $_GET['q'];   
+
+            $topStory = StoryModel::PagSearchStory($ctr, 20);
+            $topUsers = ProfileModel::SearchUsers($ctr, $id);
+            $topTags = TagModel::SearchTags($ctr);
+            return view('search.index', [
+                'title' => $ctr,
+                'ctr' => $ctr,
+                'path' => 'home-search',
+                'topStory' => $topStory,
+                'topUsers' => $topUsers,
+                'topTags' => $topTags
+            ]);
+
+        } else {
+            $trendingTags = TagModel::TopSmallTags();
+            return view('search.index', [
+                'title' => 'Search',
+                'ctr' => '',
+                'path' => 'home-search',
+                'trendingTags' => $trendingTags
+            ]);
+        }
     }
     function login()
     {

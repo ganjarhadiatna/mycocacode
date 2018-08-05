@@ -64,47 +64,46 @@
 		</div>
 	</div>
 </div>
-<div class="frame-home frame-edit">
-	<div class="compose" id="create">
-		<div class="main">
-			<div class="edit-body">
-				<form id="form-edit-profile" method="post" action="javascript:void(0)" onsubmit="savePassword()">
-					<div class="edit-block">
-						<div class="place-edit">
-							<div class="pe-1">
-								<span class="fas fa-lg fa-key"></span>
-							</div>
-							<div class="pe-2">
-								<input type="password" name="old-password" class="txt txt-primary-color" id="old-password" required="true" placeholder="Old Password">
-							</div>
+<div class="frame-edit">
+	<div class="fe-col-1">
+		@include('profile.edit.setting')
+	</div>
+	<div class="fe-col-2">
+		<form id="form-edit-profile" method="post" action="javascript:void(0)" onsubmit="savePassword()">
+			<div class="fe-content">
+				<div class="fe-mid">
+					<div class="place-edit padding-bottom-20px">
+						<div class="pe-1">
+							<span>Old Password</span>
 						</div>
-						<br>
-						<div class="place-edit">
-							<div class="pe-1">
-								<span class="fas fa-lg fa-key"></span>
-							</div>
-							<div class="pe-2">
-								<input type="password" name="new-password" class="txt txt-primary-color" id="new-password" required="true" placeholder="New Password">
-							</div>
-						</div>
-						<div class="place-edit">
-							<div class="pe-1">
-								<span class="fas fa-lg fa-key"></span>
-							</div>
-							<div class="pe-2">
-								<input type="password" name="renew-password" class="txt txt-primary-color" id="renew-password" required="true" placeholder="Re-type New Password">
-							</div>
-						</div>
-						<div class="place-edit">
-							<div class="pe-2 pe-btn">
-								<input type="button" name="edit-save" class="btn btn-primary-color" value="Cancel" onclick="goBack()">
-								<input type="submit" name="edit-save" class="btn btn-main-color" value="Save">
-							</div>
+						<div class="pe-2">
+							<input type="password" name="old-password" class="txt txt-primary-color" id="old-password" required="true" placeholder="Old Password">
 						</div>
 					</div>
-				</form>
+					<div class="padding-bottom-20px"></div>
+					<div class="place-edit padding-bottom-20px">
+						<div class="pe-1">
+							<span>New Password</span>
+						</div>
+						<div class="pe-2">
+							<input type="password" name="new-password" class="txt txt-primary-color" id="new-password" required="true" placeholder="New Password">
+						</div>
+					</div>
+					<div class="place-edit">
+						<div class="pe-1">
+							<span>Confirm Password</span>
+						</div>
+						<div class="pe-2">
+							<input type="password" name="renew-password" class="txt txt-primary-color" id="renew-password" required="true" placeholder="Confirm Password">
+						</div>
+					</div>
+				</div>
+				<div class="fe-bot">
+					<input type="button" name="edit-save" class="btn btn-grey-color" value="Cancel" onclick="goBack()">
+					<input type="submit" name="edit-save" class="btn btn-main-color" value="Save" style="margin-left: 10px; float: right;">
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
 @endsection

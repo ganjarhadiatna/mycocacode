@@ -81,11 +81,11 @@ a {
 
 .ctn-main-font {
 	font-family: 
-		"FontFirst", 
 		"Helvetica Neue", 
 		Helvetica, 
 		Arial, 
-		sans-serif;
+		sans-serif,
+		"FontFirst";
 	font-weight: 600;
 	&.ctn-big {
 		font-size: 54px;
@@ -118,6 +118,12 @@ a {
 		}
 	}
 	&.ctn-min-color {
+		color: $txt-min-color;
+		a {
+			color: $min-color;
+		}
+	}
+	&.ctn-link-color {
 		color: $txt-min-color;
 		a {
 			color: $min-color;
@@ -222,17 +228,16 @@ a {
 				display: inline-block;
 				vertical-align: top;
 				@media (max-width: $max-width) {
-					width: 40px;
-					height: 40px;
-					padding: 0 0;
-				}
-				@media (max-width: $min-width) {
 					position: fixed;
+
 					right: 10px;
 					bottom: 10px;
-					z-index: 100;
+					
 					width: 45px;
 					height: 45px;
+					padding: 0 0;
+
+					z-index: 100;
 				}
 				.ttl {
 					@media (max-width: $max-width) {
@@ -313,6 +318,43 @@ a {
 
 /*body*/
 #body {
+	.place-search {
+		position: relative;
+		width: 100%;
+		height: 70px;
+
+		border-bottom: 4px rgba(0,0,0,0.34) solid;
+		
+		@include grid_2x(1fr, 50px);
+
+		.txt-search {
+			position: relative;
+			width: 100%;
+			height: 70px;
+			font-size: 32px;
+			font-weight: 600;
+			background-color: rgba(0,0,0,0);
+
+			color: $txt-sek-color;
+
+			box-shadow: 0 0 0 0;
+
+			@include column_n(1);
+		}
+		.btn-search {
+			@include column_n(2);
+
+			cursor: pointer;
+			font-size: 22px;
+
+			background-color: rgba(0,0,0,0);
+			color: $txt-sek-color;
+			
+			&:hover {
+				color: $txt-min-color;
+			}
+		}
+	}
 	.banner {
 		position: relative;
 		width: 100%;

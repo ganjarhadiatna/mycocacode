@@ -35,7 +35,7 @@
 		</div>
 	</div>
 </div>
-<div class="frame-home">
+<div>
 	<div class="place-notif">
 
 		@foreach ($notif as $dt)
@@ -141,7 +141,7 @@
 			@endif
 		@endforeach
 
-		<div class="padding-bottom-15px">
+		<div>
 			{{ $notif->links() }}
 		</div>
 

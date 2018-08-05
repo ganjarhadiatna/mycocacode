@@ -1,6 +1,8 @@
-<div id="search">
-	<div class="close fa fa-lg fa-close" onclick="opSearch('close')"></div>
-	<form id="place-search" action="javascript:void(0)">
-		<input type="text" name="q" placeholder="Search" class="txt-search" id="txt-search" required="required">
+<div class="main-search" id="main-search">
+	<form action="javascript:void" method="get" id="place-search">
+		<input type="text" name="q" class="txt txt-main-color txt-no-shadow" id="txt-search" placeholder="Search designs.." required="true">
+		<button type="submit" class="btn btn-main-color">
+			<span class="fa fa-lg fa-search"></span>
+		</button>
 	</form>
 </div>

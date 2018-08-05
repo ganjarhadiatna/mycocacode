@@ -41,11 +41,10 @@
 		}
 		function opSearch(stt) {
 			if (stt === 'open') {
-				$('#search').show();
-				$('#txt-search').select();
+				$('#place-search').show();
 				setScroll('hide');
 			} else {
-				$('#search').hide();
+				$('#place-search').hide();
 				setScroll('show');
 			}
 		}
@@ -264,20 +263,27 @@
 					</ul>
 				</div>
 				<div class="col-3">
+					<a href="{{ url('/search') }}">
+						<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
+							<span class="fas fa-lg fa-search"></span>
+						</button>
+					</a>
 					@if (!Auth::id())
 						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-sekunder-color btn-no-border">
+							<button class="btn-icn btn btn-main-color btn-no-border" style="margin-left: 15px;">
 								<span>LOGIN</span>
 							</button>
 						</a>
+						<!--
 						<a href="{{ url('/register') }}" style="margin-left: 5px;">
-							<button class="create btn btn-main-color">
+							<button class="btn btn-main-color">
 								<span>REGISTER</span>
 							</button>
 						</a>
+						-->
 					@else
 						<a href="{{ url('/me/notifications') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide" style="margin-right: 5px;">
+							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
 								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
 								<span class="fas fa-lg fa-bell"></span>
 							</button>
@@ -304,6 +310,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 	
 	<div id="body">

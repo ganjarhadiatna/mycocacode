@@ -20,6 +20,11 @@
 	&.btn-radius {
 		border-radius: 40px;
 	}
+	&.btn-link {
+		
+		text-align: center;
+		display: block;
+	}
 	&.btn-div {
 		height: 40px;
 		line-height: 40px;;
@@ -41,7 +46,7 @@
 		background-color: rgba(0,0,0,0);
 		color: $sek-color;
 		&:hover {
-			background-color: rgba(0,0,0,0.2);
+			background-color: rgba(0,0,0,0.84);
 			color: $sek-color;
 		}
 	}
@@ -52,6 +57,14 @@
 	&.btn-main4-color {
 		background-color: $sek-color;
 		color: $min-color;
+	}
+	&.btn-main5-color {
+		background-color: rgba(0,0,0,0);
+		color: $txt-sek-color;
+		&:hover {
+			background-color: rgba(0,0,0,0);
+			color: $txt-min-color;
+		}
 	}
 	&.btn-sekunder-color {
 		background-color: $sek-color;
@@ -80,9 +93,9 @@
 	}
 	&.btn-primary-color {
 		@include rgba_black(0, #999);
-	}
-	&.btn-primary-color:hover {
-		@include rgba_black(0.1, #555);
+		&:hover {
+			@include rgba_black(0.1, #555);
+		}
 	}
 	&.btn-color-fb {
 		background-color: #44749d;

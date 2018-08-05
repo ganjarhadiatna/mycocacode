@@ -17,21 +17,46 @@
 		<div class="fp-cover">
 			<div class="fp-info">
 				<div 
-				class="fp-image image image-100px image-circle" 
+				class="fp-image image image-120px image-circle" 
 				id="place-picture" 
 				style="background-image: url({{ asset('/profile/thumbnails/'.$p->foto) }});"></div>
+				
 				<div class="padding-bottom-5px"></div>
+
 				<div id="edit-name">
-					<h1 class="ctn-main-font ctn-small">{{ $p->name }}</h1>
+					<h1 class="ctn-main-font ctn-standar">{{ $p->name }}</h1>
 				</div>
+				
 				<div>
-					<p id="edit-about"><strong>{{ $p->username }}</strong></p>
+					<p id="edit-about">
+						<strong>
+							{{ $p->username }}
+						</strong>
+						<span class="fa fa-1x fa-circle" style="position: relative; font-size: 8px; top: -2.5px;"></span>
+						{{ $p->about }}
+					</p>
 				</div>
-				<div>
-					<p id="edit-about">{{ $p->about }}</p>
+
+				<div class="other padding-5px">
+					<a class="ctn-main-font ctn-white-color ctn-thin" href="{{ $p->website }}" target="_blank">
+						{{ $p->website }}
+					</a>
 				</div>
-				<div class="other">
-					<a class="link" href="{{ $p->website }}" target="_blank">{{ $p->website }}</a>
+				<div class="padding-top-5px">
+					<ul class="fp-menu">
+					    <li>
+							<a href="{{ url('/user/'.$p->id.'/following') }}" class="white">
+								<div class="val">{{ $p->ttl_following }}</div>
+								<div class="ttl">Following</div>
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('/user/'.$p->id.'/followers') }}" class="white">
+								<div class="val">{{ $p->ttl_followers }}</div>
+								<div class="ttl">Followers</div>
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -53,18 +78,6 @@
 								<div class="ttl">Saves</div>
 							</a>
 						</li>
-						<li>
-							<a href="{{ url('/user/'.$p->id.'/following') }}">
-								<div class="val">{{ $p->ttl_following }}</div>
-								<div class="ttl">Following</div>
-							</a>
-						</li>
-						<li>
-							<a href="{{ url('/user/'.$p->id.'/followers') }}">
-								<div class="val">{{ $p->ttl_followers }}</div>
-								<div class="ttl">Followers</div>
-							</a>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -72,7 +85,8 @@
 				@if (Auth::id() == $p->id)
 					<a href="{{ url('/me/setting') }}">
 						<button class="btn btn-grey-color">
-							<span class="">Edit Profile</span>
+							<span class="fa fa-lg fa-cog"></span>
+							<span class="">Setting</span>
 						</button>
 					</a>
 				@else

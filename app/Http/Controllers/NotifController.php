@@ -49,14 +49,10 @@ class NotifController extends Controller
             $id = 0;
         }
         NotifModel::UpdateNotifS($id);
-        $topUsers = ProfileModel::TopUsers($id, 8);
-        $topTags = TagModel::TopSmallTags();
         $notif = NotifModel::GetNotifS($id, 20);
         return view('profile.notifications', [
             'title' => 'Notifications',
             'path' => 'notif',
-            'topUsers' => $topUsers,
-            'topTags' => $topTags,
             'notif' => $notif
         ]);
     }

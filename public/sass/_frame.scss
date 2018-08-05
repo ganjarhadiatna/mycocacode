@@ -322,13 +322,13 @@
 		line-height: 120px;
 		font-size: 48pt;
 		border-radius: 100%;
-		background-color: $pos-color;
+		background-color: $min-color;
 		color: $sek-color;
 	}
 	.ttl {
 		font-size: $txt-size-big;
 		font-weight: 600;
-		color: $sek-color;
+		color: $txt-sek-color;
 	}
 }
 
@@ -661,12 +661,45 @@
 	left: 0;
 	width: 100%;
 	background-color: #fff;
+	.fp-menu {
+		position: relative;
+		cursor: default;
+		li {
+			a {
+				display: block;
+				color: $txt-sek-color;
+				&:hover {
+					color: $txt-min-color;
+				}
+				&.white {
+					color: $sek-color;
+				}
+			}
+
+			position: relative;
+
+			cursor: default;
+
+			list-style: none;
+			display: inline-block;
+
+			padding: 0 10px;
+
+			.val {
+				font-size: 16px;
+				font-weight: 600;
+			}
+			.ttl {
+				font-size: 14px;
+			}
+		}
+	}
 	.fp-top {
 		position: relative;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 350px;
+		height: 400px;
 
 		background-size: cover;
 		background-position: center;
@@ -679,8 +712,12 @@
 			background-color: rgba(0,0,0,0.54);
 			.fp-info {
 				@include post_center();
+				
+				width: calc(100% - 20px);
+				
 				text-align: center;
 				color: #fff;
+
 				.fp-image {
 					position: relative;
 					margin: auto;
@@ -714,127 +751,117 @@
 				}
 			}
 
-			.fp-menu {
-				position: relative;
-				cursor: default;
-				li {
-					a {
-						display: block;
-						color: $txt-sek-color;
-						&:hover {
-							color: $txt-min-color;
-						}
-					}
-
-					position: relative;
-
-					cursor: default;
-
-					list-style: none;
-					display: inline-block;
-
-					padding: 0 10px;
-
-					.val {
-						font-size: 16px;
-						font-weight: 600;
-					}
-					.ttl {
-						font-size: 14px;
-					}
-
-				}
-			}
 		}
 	}
 }
 
 .frame-edit {
-	.create-head {
-		@include bdr_bottom();
+	position: relative;
+	width: 800px;
+	margin: auto;
+
+	margin-top: 20px;
+	margin-bottom: 30px;
+
+	@include grid_2x(300px, 1fr);
+
+	@media (max-width: $max-width) {
+		width: calc(100% - 20px);
+		@include grid_none();
 	}
-	.edit-body {
-		padding: 0px 2.5% 30px 2.5%;
-		background-color: $sek-color;
-		.edit-block {
-			p {
-				font-weight: 900;
-				padding: 15px 0;
-				color: $txt-sek-color;
-				@include bdr_bottom();
-			}
-			ul {
-				li {
-					list-style: none;
-					width: 100%;
-					padding: 15px 0;
-					cursor: pointer;
-					font-size: $txt-size-small;
-					color: $txt-sek-color;
-					@include bdr_bottom();
-					@include grid_2x(1fr, 50px);
-					&:hover {
-						color: $txt-min-color;
-					}
-					.ed-1 {
-						@include column_1();
-					}
-					.ed-2 {
-						@include column_2();
-						text-align: center;
-						float: right;
-					}
-				}
-			}
-			.place-edit {
+
+	.fe-col-1 {
+		@include column_n(1);
+	}
+	.fe-col-2 {
+		@include column_n(2);
+	}
+
+	.fe-block {
+		position: relative;
+		width: calc(100% - 20px);
+		@media (max-width: $max-width) {
+			width: 100%;
+		}
+		strong {
+			color: $txt-pri-color;
+			font-size: 14px;
+		}
+		ul {
+			li {
 				position: relative;
-				width: 100%;
-				padding-top: 25px;
+				width: calc(100% - 30px);
+				padding: 10px 15px;
+				
+				list-style: none;
+				
 				color: $txt-sek-color;
-				font-size: $txt-size-small;
-				@include grid_2x(40px, 1fr);
-				.pe-1 {
-					@include column_1();
-					line-height: 40px;
+				font-size: 16px;
+				font-weight: 600;
+
+				&:hover {
+					background-color: rgba(225,225,225,0.34);
+					color: $txt-min-color;
 				}
-				.pe-2 {
-					@include column_2();
-				}
-				.pe-btn {
-					text-align: right;
-					.btn {
-						margin-left: 15px;
-						margin-bottom: 15px;
-					}
-				}
-				.edit-text {
-					width: calc(100% - 30px);
-					min-width: calc(100% - 30px);
-					max-width: calc(100% - 30px);
-					height: 80px;
-					min-height: 80px;
-					max-height: 80px;
+				
+				&.active {
+					background-color: rgba(225,225,225,0.34);
+					color: $txt-min-color;
 				}
 			}
-			.change {
-				position: relative;
-				width: 100%;
-				padding-top: 25px;
-				#change-picture {
-					display: none;
-				}
-				#btn-save-foto {
-					width: 70px;
-					margin: auto;
-					text-align: center;
-					line-height: 40px;
-				}
+		}
+	}
+
+	.fe-content {
+		position: relative;
+		width: 100%;
+		background-color: #fff;
+		box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+		.place-edit {
+			.pe-1 {
+				font-size: 14px;
+				color: $txt-sek-color;
+				margin-bottom: 5px;
 			}
+		}
+		.change {
+			text-align: center;
 			.foto {
 				position: relative;
 				margin: auto;
-				margin-bottom: 25px;
+				display: inline-block;
+				vertical-align: middle;
 			}
+			.btn {
+				position: relative;
+				width: 120px;
+				margin-left: 20px;
+			}
+			.file {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			#change-picture {
+				display: none;
+			}
+		}
+		.fe-mid {
+			position: relative;
+			width: calc(100% - 40px);
+			padding: 20px;
+		}
+		.fe-top {
+			position: relative;
+			width: calc(100% - 40px);
+			padding: 20px;
+			text-align: center;
+			color: $txt-sek-color;
+		}
+		.fe-bot {
+			position: relative;
+			width: calc(100% - 40px);
+			padding: 20px;
+			@include bdr_top();
 		}
 	}
 }
@@ -845,9 +872,9 @@
 	padding: 0 15px;
 	height: 45px;
 	line-height: 45px;
-	margin-top: 2.5px;
+	margin-top: 5px;
 	margin-right: 5px;
-	margin-bottom: 2.5px;
+	margin-bottom: 5px;
 	display: inline-block;
 
 	background-color: #f0f0f0;
