@@ -48,6 +48,9 @@
 		img {
 			width: 100%;
 		}
+		&.et-height-50px {
+			min-height: 50px;
+		}
 	}
 }
 .slc {
@@ -74,4 +77,7 @@
 
 .hidden {
 	display: none;
+}
+textarea {
+	resize: none;
 }

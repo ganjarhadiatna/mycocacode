@@ -233,7 +233,7 @@
 					<ul class="hc-list">
 						<a href="{{ url('/') }}">
 					    	<li>
-					    		Home Feeds
+					    		Home
 					    	</li>
 					    </a>
 					    <a href="{{ url('/news') }}">
@@ -246,7 +246,6 @@
 					    		Jobs
 					    	</li>
 					    </a>
-					    
 					    <li id="all-ctr">
 					    	<span>Explore <span class="fa fa-1x fa-th"></span></span>
 					    	<div id="pl-ctr">

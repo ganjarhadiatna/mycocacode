@@ -23,50 +23,57 @@
 		})
 		.done(function(data) {
 			var dt = '';
-			for (var i = 0; i < data.length; i++) {
-				var server_foto = server+'/profile/thumbnails/'+data[i].foto;
-				var server_user = server+'/user/'+data[i].id;
-				if (data[i].id == id) {
-					var op = '<span class="fa fa-lg fa-circle"></span>\
-							<span class="del pointer" onclick="opQuestion('+"'open'"+','+"'Delete this comment ?'"+','+"'deleteComment("+data[i].idcomment+")'"+')" title="Delete comment.">Delete</span>';
-				} else {
-					var op = '';
-				}
-				dt += '\
-					<div class="frame-comment comment-owner">\
-						<div class="dt-1">\
-							<a href="'+server_user+'" title="'+data[i].username+'">\
-								<div class="image image-45px image-circle" style="background-image: url('+server_foto+')"></div>\
-							</a>\
-						</div>\
-						<div class="dt-2">\
-							<div class="desk comment-owner-radius">\
-								<div class="comment-main">\
-									<a href="'+server_user+'" title="'+data[i].username+'"><strong class="comment-name">'+data[i].username+'</strong></a>\
-									<div>'+data[i].description+'</div>\
+			if (data.length > 0) {
+				for (var i = 0; i < data.length; i++) {
+					var server_foto = server+'/profile/thumbnails/'+data[i].foto;
+					var server_user = server+'/user/'+data[i].id;
+					if (data[i].id == id) {
+						var op = '<span class="fa fa-lg fa-circle"></span>\
+								<span class="del pointer" onclick="opQuestion('+"'open'"+','+"'Delete this comment ?'"+','+"'deleteComment("+data[i].idcomment+")'"+')" title="Delete comment.">Delete</span>';
+					} else {
+						var op = '';
+					}
+					dt += '\
+						<div class="frame-comment comment-owner">\
+							<div class="dt-1">\
+								<a href="'+server_user+'" title="'+data[i].username+'">\
+									<div class="image image-45px image-circle" style="background-image: url('+server_foto+')"></div>\
+								</a>\
+							</div>\
+							<div class="dt-2">\
+								<div class="desk comment-owner-radius">\
+									<div class="comment-main">\
+										<a href="'+server_user+'" title="'+data[i].username+'"><strong class="comment-name">'+data[i].username+'</strong></a>\
+										<div>'+data[i].description+'</div>\
+									</div>\
+								</div>\
+								<div class="tgl">\
+									<span>'+data[i].created+'</span>\
+									'+op+'\
 								</div>\
 							</div>\
-							<div class="tgl">\
-								<span>'+data[i].created+'</span>\
-								'+op+'\
-							</div>\
 						</div>\
-					</div>\
-				';
-			}
-			if (stt === 'new') {
-				$('#place-comment').html(dt);
-			} else {
-				$('#place-comment').append(dt);
+					';
+				}
+				if (stt === 'new') {
+					$('#place-comment').html(dt);
+				} else {
+					$('#place-comment').append(dt);
 
-				var ttl = (parseInt($('#offset-comment').val()) + 5);
-				$('#offset-comment').val(ttl);
-			}
-			if (data.length >= limit) {
-				$('#frame-more-comment').show();
+					var ttl = (parseInt($('#offset-comment').val()) + 5);
+					$('#offset-comment').val(ttl);
+				}
+				if (data.length >= limit) {
+					$('#frame-more-comment').show();
+				} else {
+					$('#frame-more-comment').hide();
+				}
 			} else {
-				$('#frame-more-comment').hide();
+				if ($('#place-comment').html() != ' ') {
+					$('#place-comment').html('<div class="ctn-main-font ctn-18px ctn-sek-color padding-top-20px">Comments Empty</div>');
+				}
 			}
+
 		})
 		.fail(function(data) {
 			console.log(data.responseJSON);
@@ -97,6 +104,14 @@
 		var top = $('#tr-comment').offset().top;
 		$('html, body').animate({scrollTop : (Math.round(top) - 70)}, 300);
 		$('#comment-description').focus();
+	}
+	function changeSize() {
+		var stt = $('#frame-story').attr('class');
+		if (stt == 'frame-story') {
+			$('#frame-story').addClass('fs-size-big');
+		} else {
+			$('#frame-story').removeClass('fs-size-big');
+		}
 	}
 	$(document).ready(function() {
 		$('#offset-comment').val(0);
@@ -169,7 +184,7 @@
 	});
 </script>
 
-<div class="frame-story">
+<div class="frame-story" id="frame-story">
 
 	<div class="top">
 		<div class="grid">
@@ -204,7 +219,7 @@
 		<div class="grid">
 			<div class="col-1">
 
-				<div class="pict">
+				<div class="pict" onclick="changeSize()">
 					@foreach ($images as $img)
 						<div class="image" 
 							style="
@@ -218,13 +233,18 @@
 				<div>
 					<div class="top-comment" id="tr-comment">
 						@if (Auth::id())
-						<form method="post" action="javascript:void(0)" id="comment-publish">
-							<div class="comment-head padding-20px">
-								<div>
-									<input class="txt comment-text txt-primary-color" id="comment-description" placeholder="Type comment here.." />
+						<div class="bdr-top bdr-bottom">
+							<form method="post" action="javascript:void(0)" id="comment-publish">
+								<div class="comment-head padding-20px">
+									<div>
+										<textarea class="txt edit-text et-height-50px comment-text txt-primary-color" id="comment-description" placeholder="Type comment here.."></textarea>
+									</div>
+									<div class="padding-top-15px" style="text-align: right;">
+										<input type="submit" name="post" class="btn btn-main-color" value="Send">
+									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 						@endif
 						<div class="comment-content" id="place-comment"></div>
 					</div>

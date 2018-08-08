@@ -522,10 +522,7 @@
 
 .frame-story {
 	position: relative;
-	
-	//width: $col-full;
-	width: 1000px;
-
+	width: $col-full;
 	padding: 25px 0;
 	border-radius: 10px;
 	margin: auto;
@@ -533,6 +530,15 @@
 	@media (max-width: $max-width) {
 		width: calc(100% - 20px);
 		padding: 15px 10px;
+	}
+
+	&.fs-size-big {
+		//width: $col-full;
+		.mid {
+			.grid {
+				@include grid_none();
+			}
+		}
 	}
 
 	.top {
@@ -555,7 +561,7 @@
 
 	.mid {
 		.grid {
-			@include grid_2x(1fr, 400px);
+			@include grid_2x(1fr, 500px);
 			@media (max-width: $max-width) {
 				@include grid_none();
 			}
@@ -579,6 +585,7 @@
 			background-color: #fff;
 			box-shadow: 0 0 0 1px rgba(225,225,225,0.54);
 			margin-bottom: 20px;
+			cursor: pointer;
 		}
 		.info {
 			position: relative;
