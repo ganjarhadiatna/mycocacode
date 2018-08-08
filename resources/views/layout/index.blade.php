@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pictlr - @yield('title')</title>
+	<title>CocaCode - @yield('title')</title>
 	<meta charset=utf-8>
     <meta name=description content="">
     <meta name=viewport content="width=device-width, initial-scale=1">
@@ -231,24 +231,24 @@
 				</div>
 				<div class="col-2">
 					<ul class="hc-list">
-					    <a href="{{ url('/fresh') }}">
+						<a href="{{ url('/') }}">
 					    	<li>
-					    		Fresh
+					    		Home Feeds
 					    	</li>
 					    </a>
-					    <a href="{{ url('/trending') }}">
+					    <a href="{{ url('/news') }}">
 					    	<li>
-					    		Trending
+					    		News
 					    	</li>
 					    </a>
-					    <a href="{{ url('/popular') }}">
+					    <a href="{{ url('/jobs') }}">
 					    	<li>
-					    		Popular
+					    		Jobs
 					    	</li>
 					    </a>
 					    
 					    <li id="all-ctr">
-					    	All <span class="fa fa-lg fa-angle-down"></span>
+					    	<span>Explore <span class="fa fa-1x fa-th"></span></span>
 					    	<div id="pl-ctr">
 							    @include('main.ctr')
 							</div>
@@ -265,17 +265,15 @@
 					</a>
 					@if (!Auth::id())
 						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-main-color btn-no-border" style="margin-left: 15px;">
+							<button class="btn-icn btn btn-sekunder-color btn-no-border" style="margin-left: 15px; margin-bottom: 15px;">
 								<span>LOGIN</span>
 							</button>
 						</a>
-						<!--
 						<a href="{{ url('/register') }}" style="margin-left: 5px;">
 							<button class="btn btn-main-color">
 								<span>REGISTER</span>
 							</button>
 						</a>
-						-->
 					@else
 						<a href="{{ url('/me/notifications') }}">
 							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">

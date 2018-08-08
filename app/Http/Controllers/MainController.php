@@ -33,34 +33,55 @@ class MainController extends Controller
             }
         }
     }
+    
     function index()
     {
-        /*if (Auth::id()) {
-            $id = Auth::id();
-            $profile = FollowModel::GetAllFollowing($id);
-            $topStory = StoryModel::PagTimelinesStory(20, $profile, $id);
-            $topUsers = ProfileModel::TopUsers($id, 10);
-            $topTags = TagModel::TopTags(10);
-            return view('home.index', [
-                'title' => 'Official Site',
-                'path' => 'home',
-                'topStory' => $topStory,
-                'topTags' => $topTags,
-                'topUsers' => $topUsers
-            ]);
-        } else {
-            return view('home.home', [
-                'title' => 'Official Site',
-                'path' => 'home'
-            ]);
-        }*/
-        $topStory = StoryModel::PagPopularStory(20);
+        $topStory = StoryModel::PagAllStory(20);
         return view('home.landing', [
             'title' => 'Its a place for designer',
-            'path' => 'home',
+            'path' => 'fresh',
             'topStory' => $topStory
         ]);
     }
+    function timelines()
+    {
+        $id = Auth::id();
+        $profile = FollowModel::GetAllFollowing($id);
+        $topStory = StoryModel::PagTimelinesStory(20, $profile);
+        return view('home.landing', [
+            'title' => 'Timelines',
+            'path' => 'timelines',
+            'topStory' => $topStory
+        ]);
+    }
+    function popular()
+    {
+        $topStory = StoryModel::PagPopularStory(20);
+        return view('home.landing', [
+            'title' => 'Popular',
+            'path' => 'popular',
+            'topStory' => $topStory
+        ]);
+    }
+    function fresh()
+    {
+        $topStory = StoryModel::PagAllStory(20);
+        return view('home.landing', [
+            'title' => 'Fresh',
+            'path' => 'fresh',
+            'topStory' => $topStory
+        ]);
+    }
+    function trending()
+    {
+        $topStory = StoryModel::PagTrendingStory(20);
+        return view('home.landing', [
+            'title' => 'Trending',
+            'path' => 'trending',
+            'topStory' => $topStory
+        ]);
+    }
+
     function collections()
     {
         if (Auth::id()) {
@@ -121,48 +142,7 @@ class MainController extends Controller
             'allTags' => $allTags
         ]);
     }
-    function timelines()
-    {
-        $id = Auth::id();
-        $profile = FollowModel::GetAllFollowing($id);
-        $topStory = StoryModel::PagTimelinesStory(20, $profile);
-        return view('others.index', [
-            'title' => 'Timelines',
-            'path' => 'timelines',
-            'topStory' => $topStory
-        ]);
-    }
-    function popular()
-    {
-        $topStory = StoryModel::PagPopularStory(20);
-        return view('others.index', [
-            'title' => 'Popular',
-            'path' => 'popular',
-            'topStory' => $topStory
-        ]);
-    }
-    function composeStory()
-    {
-        return view('compose.story', ['title' => 'New Story', 'path' => 'compose']);
-    }
-    function fresh()
-    {
-        $topStory = StoryModel::PagAllStory(20);
-        return view('others.index', [
-            'title' => 'Fresh',
-            'path' => 'fresh',
-            'topStory' => $topStory
-        ]);
-    }
-    function trending()
-    {
-        $topStory = StoryModel::PagTrendingStory(20);
-        return view('others.index', [
-            'title' => 'Trending',
-            'path' => 'trending',
-            'topStory' => $topStory
-        ]);
-    }
+    
     function search($ctr)
     {
         if (Auth::id()) {
@@ -187,11 +167,13 @@ class MainController extends Controller
 
         } else {
             $trendingTags = TagModel::TopSmallTags();
+            $topStory = StoryModel::PagTrendingStory(20);
             return view('search.index', [
                 'title' => 'Search',
                 'ctr' => '',
                 'path' => 'home-search',
-                'trendingTags' => $trendingTags
+                'trendingTags' => $trendingTags,
+                'topStory' => $topStory
             ]);
         }
     }
@@ -218,15 +200,24 @@ class MainController extends Controller
             ]);
 
         } else {
+            $topStory = StoryModel::PagTrendingStory(20);
             $trendingTags = TagModel::TopSmallTags();
             return view('search.index', [
                 'title' => 'Search',
                 'ctr' => '',
                 'path' => 'home-search',
-                'trendingTags' => $trendingTags
+                'trendingTags' => $trendingTags,
+                'topStory' => $topStory
             ]);
         }
     }
+
+    function composeStory()
+    {
+        return view('compose.story', ['title' => 'New Story', 'path' => 'compose']);
+    }
+
+
     function login()
     {
         return view('sign.in', ['title' => 'Login', 'path' => 'none']);

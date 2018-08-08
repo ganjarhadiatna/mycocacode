@@ -5,7 +5,7 @@
 
 <div class="col-700px padding-20px">
 	<form action="javascript:void" method="get" id="place-search">
-		<div class="place-search">
+		<div class="place-search padding-top-10px">
 			<input type="text" name="q" class="txt-search" id="txt-search" placeholder="Search designs.." required="true" value="{{ $ctr }}">
 			<button type="submit" class="btn-search">
 				<span class="fa fa-lg fa-search"></span>
@@ -35,7 +35,6 @@
 
 		@if (count($trendingTags) != 0)
 			<div class="padding-top-20px">
-				<h3 class="ctn-main-font ctn-sek-color ctn-16px padding-10px">Trending Nows</h3>
 				@foreach ($trendingTags as $tag)
 					<?php 
 						$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
@@ -53,7 +52,7 @@
 	@endif
 </div>
 
-@if (!empty($ctr))
+
 
 	@if (count($topStory) == 0)
 		@include('main.post-empty')	
@@ -66,6 +65,6 @@
 		{{ $topStory->links() }}
 	@endif
 
-@endif
+
 
 @endsection

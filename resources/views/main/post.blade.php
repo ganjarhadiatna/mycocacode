@@ -1,9 +1,29 @@
 <div class="frame-post">
 	<div class="mid">
+		<!--
+		<div class="bot-tool padding-bottom-10px">
+			<div class="nts">
+				<div class="pp">
+					<a href="{{ url('/user/'.$story->id) }}">
+						<div class="image image-25px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
+					</a>
+					<a href="{{ url('/user/'.$story->id) }}">
+						<div class="username">
+							{{ $story->username }}
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		-->
 		<div class="mid-tool">
 			<a href="{{ url('/story/'.$story->idstory) }}">
 				<div class="cover-theme">
-					<div class="cover"></div>
+					<div class="cover">
+						<div class="desc ctn-main-font ctn-14px ctn-white-color ctn-thin">
+							{{ $story->description }}
+						</div>
+					</div>
 					<div class="image image-all"
 						style="background-image: url({{ asset('/story/thumbnails/'.$story->cover1) }});"></div>
 				</div>
@@ -11,21 +31,11 @@
 		</div>
 		<div class="bot-tool">
 			<div class="nts">
-				<a href="{{ url('/user/'.$story->id) }}">
-					<div class="image image-25px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
-				</a>
+				<div class="notes ctn-main-font ctn-12px ctn-sek-color ctn-thin padding-bottom-10px">
+					<span>{{ ($story->views + $story->ttl_love + $story->ttl_comment + $story->ttl_save).' notes' }}</span>
+				</div>
 			</div>
 			<div class="bok">
-				<button class="btn btn-sekunder-color btn-no-border btn-pad-5px love">
-					<span class="fa fa-lg fa-eye"></span>
-					<span>{{ $story->views }}</span>
-				</button>
-				<a href="{{ url('/story/'.$story->idstory) }}">
-					<button class="btn btn-sekunder-color btn-no-border btn-pad-5px">
-						<span class="fa fa-lg fa-comment"></span>
-						<span>{{ $story->ttl_comment }}</span>
-					</button>
-				</a>
 				<button 
 					class="btn btn-sekunder-color btn-no-border btn-pad-5px love" 
 					onclick="addLove('{{ $story->idstory }}')">
@@ -34,7 +44,6 @@
 					@else
 						<span class="love-{{ $story->idstory }} non fa fa-lg fa-heart"></span>
 					@endif
-					<span>{{ $story->ttl_love }}</span>
 				</button>
 				<button class="btn btn-sekunder-color btn-no-border save"
 					key="{{ $story->idstory }}" 
@@ -44,16 +53,9 @@
 					@else
 						<span class="bookmark-{{ $story->idstory }} non fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
 					@endif
-					<span>{{ $story->ttl_save }}</span>
 				</button>
 			</div>
 		</div>
+		
 	</div>
-	<!--
-	@if ($story->description)
-		<div class="desc">
-			{{ $story->description }}
-		</div>
-	@endif
-	-->
 </div>

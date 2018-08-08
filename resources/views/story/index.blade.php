@@ -170,6 +170,7 @@
 </script>
 
 <div class="frame-story">
+
 	<div class="top">
 		<div class="grid">
 			<div class="col-1">
@@ -191,6 +192,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="mid">
 		<div>
 			@if ($story->description)
@@ -354,7 +356,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="bot"></div>
+	
 </div>
 
 @endforeach
