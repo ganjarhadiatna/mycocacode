@@ -31,7 +31,7 @@
 			</a>
 		</ul>
 	</div>
-	<div class="fe-block">
+	<div class="fe-block padding-bottom-20px">
 		<strong>More</strong>
 		<ul>
 			<!--<li>Delete your account</li>-->

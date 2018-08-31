@@ -212,7 +212,7 @@
 	margin: auto;
 	@media (max-width: $max-width) {
 		width: calc(100% - 20px);
-		padding: 0 10px;
+		padding: 0 10px 15px 10px;
 	}
 }
 

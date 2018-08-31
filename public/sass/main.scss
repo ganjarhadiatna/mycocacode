@@ -390,7 +390,7 @@ a {
 	.place-search {
 		position: relative;
 		width: 100%;
-		height: 80px;
+		height: 70px;
 
 		//border-bottom: 4px rgba(0,0,0,0.34) solid;
 		
@@ -399,9 +399,9 @@ a {
 		.txt-search {
 			position: relative;
 			width: 100%;
-			height: 80px;
-			font-size: 38px;
-			font-weight: 600;
+			height: 70px;
+			font-size: 28pt;
+			font-weight: 500;
 			background-color: rgba(0,0,0,0);
 
 			color: $txt-sek-color;
@@ -414,7 +414,7 @@ a {
 			@include column_n(2);
 
 			cursor: pointer;
-			font-size: 22px;
+			font-size: 18px;
 
 			background-color: rgba(0,0,0,0);
 			color: $txt-sek-color;
@@ -436,8 +436,8 @@ a {
 			margin: auto;
 			width: 400px;
 			padding: 15px 0;
-			@media (max-width: $min-width) {
-				width: 100%;
+			@media (max-width: $max-width) {
+				width: calc(100% - 20px);
 			}
 		}
 	}
@@ -490,12 +490,22 @@ a {
 	.post {
 		/*@include col_full();
 		@include col_masonry(4);*/
-		@include col_full();
+		position: relative;
+		width: calc(100% - 30px);
+		margin: auto;
+		
 		display: flex;
 	    flex-wrap: wrap;
+
 	    margin-top: 15px;
+	    
+	    @media (max-width: $max-width) {
+			margin-top: 10px;
+			width: calc(100% - 10px);
+		}
+
 	    .frame-post {
-	    	width: ($col-full / 5) - 30px;
+	    	width: calc(20% - 30px);
 	    	margin: 15px;
 	    	@media (max-width: $max-width) {
 	    		width: calc(50% - 10px);
@@ -506,9 +516,6 @@ a {
 	    		margin: 5px;
 	    	}
 	    }
-		@media (max-width: $max-width) {
-			margin-top: 10px;
-		}
 	}
 	.post-flex {
 		@include col_full();
@@ -519,6 +526,7 @@ a {
 		position: relative;
 		width: 100%;
 		height: 60px;
+		overflow: hidden;
 		background-color: $sek-color;
 		text-align: center;
 

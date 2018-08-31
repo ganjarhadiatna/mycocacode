@@ -76,8 +76,8 @@
 			   	//console.log(data);
 			})
 			.fail(function(data) {
-			  	opAlert('open', "there is an error, please try again.");
-			   	//console.log(data.responseJSON);
+			  	opAlert('open', data.responseJSON.message);
+			   	console.log(data.responseJSON);
 			})
 			.always(function () {
 				close_progress();

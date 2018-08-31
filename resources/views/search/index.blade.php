@@ -3,7 +3,7 @@
 @section('path', $path)
 @section('content')
 
-<div class="col-700px padding-20px">
+<div class="col-700px padding-top-20px">
 	<form action="javascript:void" method="get" id="place-search">
 		<div class="place-search padding-top-10px">
 			<input type="text" name="q" class="txt-search" id="txt-search" placeholder="Search designs.." required="true" value="{{ $ctr }}">

@@ -100,6 +100,87 @@ class StoryController extends Controller
     }
     function publish(Request $request)
     {
+        $id = Auth::id();
+        $content = $request['content'];
+        if ($id) 
+        {
+            if ($request->hasFile('image')) 
+            {
+                
+                $image = $request->file('image');
+
+                for ($i=0; $i < count($image); $i++) 
+                {
+                    $wd = getImageSize($image[$i])[0];
+                    $hg = getImageSize($image[$i])[1];
+
+                    $chrc = array(
+                        '[',']','@',' ','+','-','#','*','<','>',
+                        '_','(',')',';',',','&','%','$','!','`',
+                        '~','=','{','}','/',':','?','"',"'",'^'
+                    );
+                    $filename = $id.time().str_replace($chrc, '', $image[$i]->getClientOriginalName());
+
+                    //save image to server
+                    //creating thumbnail and save to server
+                    $destination = public_path('story/thumbnails/'.$filename);
+                    $img = Image::make($image[$i]->getRealPath());
+                    $mv1 = $img->resize(400, 400, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destination);
+
+                    //saving image real to server
+                    $destination = public_path('story/covers/');
+                    $mv2 = $image[$i]->move($destination, $filename);
+
+                    if ($mv1 && $mv2) 
+                    {
+                        $data = array(
+                            'description' => $content,
+                            'id' => $id
+                        );
+                        $rest = StoryModel::AddStory($data);
+                        if ($rest) 
+                        {
+                            $idstory = StoryModel::GetID();
+
+                            $this->mentions($request['tags'], $idstory);
+
+                            $dtImage = array(
+                                'image' => $filename, 
+                                'id' => $id,
+                                'idstory' => $idstory,
+                                'width' => $wd,
+                                'height' => $hg
+                            );
+
+                            $rest = ImageModel::AddImage($dtImage);
+                            if ($rest) 
+                            {
+                                echo $idstory;
+                            }
+                            else 
+                            {
+                                echo 'failed';
+                            }
+                        }
+                        else 
+                        {
+                            echo 'failed';
+                        }
+                    }
+                    else 
+                    {
+                        echo 'failed';
+                    }
+                }
+            } else {
+                echo 'no-file';
+            }
+        } else {
+            echo 'no-login';
+        }
+        /*
     	$id = Auth::id();
         $content = $request['content'];
         if ($id) {
@@ -156,6 +237,7 @@ class StoryController extends Controller
         } else {
             echo 'no-login';
         }
+        */
     }
     function saveEditting(Request $request)
     {

@@ -87,12 +87,14 @@
 					@foreach ($profile as $p)
 						<div class="change" id="change">
 							
-							<div class="foto image image-150px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
+							<div class="foto padding-15px">
+								<div class="image image-150px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
+							</div>
 
 							<div class="file">
 								<input type="file" name="change-picture" id="change-picture" onchange="loadFoto()">
 								<label for="change-picture">
-									<div class="btn btn-div btn-grey-color" id="btn-save-foto">
+									<div class="btn btn-div btn-sekunder-color" id="btn-save-foto">
 										<span class="fas fa-lg fa-camera"></span>
 										<span>Choose File</span>
 									</div>

@@ -475,7 +475,7 @@
 	position: relative;
 	width: calc(100% - 30px);
 	padding: 15px;
-	box-shadow: 0 0 0 2px rgba(225,225,225,0.34);
+	box-shadow: 0 0 0 1px rgba(225,225,225,0.54);
 	background-color: #fff;
 	margin: 15px 0 20px 0;
 	
@@ -522,7 +522,7 @@
 
 .frame-story {
 	position: relative;
-	width: $col-full;
+	width: 1000px;
 	padding: 25px 0;
 	border-radius: 10px;
 	margin: auto;
@@ -561,7 +561,7 @@
 
 	.mid {
 		.grid {
-			@include grid_2x(1fr, 500px);
+			@include grid_2x(1fr, 400px);
 			@media (max-width: $max-width) {
 				@include grid_none();
 			}
@@ -857,6 +857,10 @@
 				position: relative;
 				width: 120px;
 				margin-left: 20px;
+				@media (max-width: $max-width) {
+					margin-left: 0;
+					margin-bottom: 15px;
+				}
 			}
 			.file {
 				display: inline-block;
@@ -891,18 +895,23 @@
 	position: relative;
 
 	padding: 0 15px;
-	height: 45px;
-	line-height: 45px;
+
+	height: 35px;
+	line-height: 35px;
+
 	margin-top: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;
+
 	display: inline-block;
 
-	background-color: #f0f0f0;
+	background-color: $sek-color;
 	color: $txt-sek-color;
-	font-size: $txt-size-small;
+	border: 1px rgba(0,0,0,0.1) solid;
 
-	font-weight: 600;
+	font-size: 11pt;
+
+	font-weight: 500;
 	border-radius: 3px;
 	&:hover {
 		color: $txt-min-color;

@@ -233,7 +233,7 @@
 					<ul class="hc-list">
 						<a href="{{ url('/') }}">
 					    	<li>
-					    		Home
+					    		Designs
 					    	</li>
 					    </a>
 					    <a href="{{ url('/news') }}">

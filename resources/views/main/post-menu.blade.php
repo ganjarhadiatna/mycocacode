@@ -8,7 +8,7 @@
 		window.location = server_post;
 	}
 	function opQuestionPost(idstory) {
-		opQuestion('open','Are you sure you want to delete this story ?', 'deletePost("'+idstory+'")');
+		opQuestion('open','Are you sure you want to delete this design ?', 'deletePost("'+idstory+'")');
 	}
 	function deletePost(idstory) {
 		$.ajax({
@@ -28,9 +28,10 @@
 				opAlert('open', 'Failed to delete this story.');
 			}
 		})
-		.fail(function() {
+		.fail(function(e) {
 			close_progress();
-			opAlert('open', 'There is an error, please try again.');
+			opAlert('open', e.responseJSON);
+			console.log(e.responseJSON);
 		});
 		
 	}

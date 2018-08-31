@@ -237,7 +237,7 @@
 							<form method="post" action="javascript:void(0)" id="comment-publish">
 								<div class="comment-head padding-20px">
 									<div>
-										<textarea class="txt edit-text et-height-50px comment-text txt-primary-color" id="comment-description" placeholder="Type comment here.."></textarea>
+										<textarea class="txt edit-text et-height-50px comment-text txt-primary-color" id="comment-description" placeholder="Write comments.."></textarea>
 									</div>
 									<div class="padding-top-15px" style="text-align: right;">
 										<input type="submit" name="post" class="btn btn-main-color" value="Send">
@@ -260,7 +260,10 @@
 			</div>
 			<div class="col-2">
 				<div class="info">
-					
+					<h2 class="ctn-main-font ctn-sek-color ctn-18px">
+						Notes
+					</h2>
+
 					<div class="block">
 						<div class="icn love pointer" key="{{ $story->idstory }}" onclick="addLove('{{ $story->idstory }}')">
 							@if (is_int($story->is_love))
@@ -316,7 +319,12 @@
 							<span>{{ $story->ttl_comment }} talks</span>
 						</div>
 					</div>
+				</div>
 
+				<div class="info">
+					<h2 class="ctn-main-font ctn-sek-color ctn-18px padding-top-20px">
+						Options
+					</h2>
 					<div class="block">
 						<div class="icn">
 							<span class="sh fa fa-lg fa-share-alt"></span>
