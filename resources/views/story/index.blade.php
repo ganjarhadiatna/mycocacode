@@ -196,12 +196,12 @@
 				</a>
 			</div>
 			<div class="col-2">
-				<h1 class="username ctn-main-font ctn-sek-color ctn-mikro">
+				<h1 class="username ctn-main-font ctn-sek-color ctn-mikro" style="line-height: 1.2;">
 					<a href="{{ url('/user/'.$story->id) }}">
 						{{ $story->username }}
 					</a>
 				</h1>
-				<p class="ctn-main-font ctn-sek-color ctn-14px ctn-thin">
+				<p class="ctn-main-font ctn-sek-color ctn-12px ctn-thin" style="line-height: 1.2;">
 					Published on {{ $story->created }}
 				</p>
 			</div>
@@ -209,18 +209,17 @@
 	</div>
 
 	<div class="mid">
-		<div>
-			@if ($story->description)
-				<div 
-					class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px"
-					style="white-space: normal;">
-					{{ $story->description }}
-				</div>
-			@endif
-		</div>
 		<div class="grid">
 			<div class="col-1">
-
+				<div>
+					@if ($story->description)
+						<div 
+							class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px"
+							style="white-space: normal;">
+							{{ $story->description }}
+						</div>
+					@endif
+				</div>
 				<div class="pict" onclick="changeSize()">
 					@foreach ($images as $img)
 						<div class="image" 
