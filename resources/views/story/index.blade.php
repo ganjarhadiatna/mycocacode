@@ -70,7 +70,7 @@
 				}
 			} else {
 				if ($('#place-comment').html() != ' ') {
-					$('#place-comment').html('<div class="ctn-main-font ctn-18px ctn-sek-color padding-top-20px">Comments Empty</div>');
+					$('#place-comment').html('<div class="ctn-main-font ctn-18px ctn-sek-color padding-bottom-20px">Comments Empty</div>');
 				}
 			}
 
@@ -211,7 +211,9 @@
 	<div class="mid">
 		<div>
 			@if ($story->description)
-				<div class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px">
+				<div 
+					class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px"
+					style="white-space: normal;">
 					{{ $story->description }}
 				</div>
 			@endif
@@ -245,6 +247,7 @@
 								</div>
 							</form>
 						</div>
+						<div class="padding-top-20px"></div>
 						@endif
 						<div class="comment-content" id="place-comment"></div>
 					</div>

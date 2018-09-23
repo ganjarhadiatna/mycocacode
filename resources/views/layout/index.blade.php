@@ -1,4 +1,11 @@
 <?php use App\ProfileModel; ?>
+<?php
+	if (isset($nav)) {
+		$nowNav = $nav;
+	} else {
+		$nowNav = '';
+	}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -188,7 +195,7 @@
 		});
 
 		$(document).ready(function() {
-			var pth = "@yield('path')";
+			var pth = "#{{ $nowNav }}";
 
 			if (iduser) {
 				setInterval('cekNotif()', 3000);
@@ -204,10 +211,10 @@
 				$('#zoom-pict').hide();
 				setScroll('show');
 			});
-			
-			$('#header .place .menu .pos .btn-circle').each(function(index, el) {
+
+			$('#header .hc-place .hc-menu .hc-list li').each(function(index, el) {
 				$(this).removeClass('active');
-				$('#'+pth).addClass('active');
+				$(pth).addClass('active');
 			});
 
 			$('#place-search').submit(function(event) {
@@ -231,28 +238,34 @@
 				</div>
 				<div class="col-2">
 					<ul class="hc-list">
-						<a href="{{ url('/') }}">
-					    	<li>
+						<a href="{{ url('/designs') }}">
+					    	<li id="designs">
 					    		Designs
 					    	</li>
 					    </a>
+						<a href="{{ url('/lives') }}">
+							<li id="lives">
+					    		Lives
+					    	</li>
+					    </a>
 					    <a href="{{ url('/news') }}">
-					    	<li>
+							<li id="news">
 					    		News
 					    	</li>
 					    </a>
-					    <a href="{{ url('/jobs') }}">
-					    	<li>
-					    		Jobs
-					    	</li>
-					    </a>
 					    <li id="all-ctr">
-					    	<span>Explore <span class="fa fa-1x fa-th"></span></span>
+					    	<span>Explore</span>
+					    	<span class="fa fa-lg fa-angle-down"></span>
 					    	<div id="pl-ctr">
 							    @include('main.ctr')
 							</div>
 					    </li>
-
+					    <a href="{{ url('/jobs') }}">
+							<li id="jobs">
+								<span class="fa fa-1x fa-th-large"></span>
+					    		Make Apps
+					    	</li>
+					    </a>
 					</ul>
 					
 				</div>
@@ -282,7 +295,7 @@
 						</a>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
 							<a href="{{ url('/user/'.$dt->id) }}">
-								<button class="btn-pp btn btn-circle btn-main2-color btn-radius" id="profile">
+								<button class="btn-icn btn btn-circle btn-main2-color btn-radius" id="profile">
 									<div 
 										class="image image-30px image-circle"
 										style="

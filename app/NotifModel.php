@@ -48,6 +48,7 @@ class NotifModel extends Model
             'image.image'
         )
         ->where('notif_s.iduser', $id)
+        ->where('notif_s.type', '!=', 'bookmark')
         ->leftJoin('users','users.id','=','notif_s.id')
         ->leftJoin('comment','comment.idcomment','=','notif_s.idcomment')
         ->leftJoin('story','story.idstory','=','notif_s.idstory')

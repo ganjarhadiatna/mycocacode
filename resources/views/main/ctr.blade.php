@@ -8,9 +8,14 @@
 				$title = str_replace($replace, '', $ctr->tag); 
 			?>
 			<div class="tag">
-				<a href="{{ url('/tags/'.$title) }}">
-					{{ $ctr->tag }}
-				</a>
+				<div class="col-1">
+					<span class="far fa-1x fa-circle"></span>
+				</div>
+				<div class="col-2">
+					<a href="{{ url('/tags/'.$title) }}">
+						{{ $ctr->tag }}
+					</a>
+				</div>
 			</div>
 		@endforeach
 	</div>

@@ -338,7 +338,6 @@ textarea {
     width: 100%;
     margin-bottom: 10px; }
     .frame-post .mid-tool:hover .cover {
-      background-color: rgba(0, 0, 0, 0.54);
       z-index: 1; }
     .frame-post .mid-tool .zoom {
       position: absolute;
@@ -365,7 +364,8 @@ textarea {
       position: absolute;
       top: 0;
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.84); }
       .frame-post .mid-tool .cover .desc {
         position: absolute;
         width: calc(100% - 10px);
@@ -2338,6 +2338,8 @@ a {
         display: inline-block;
         vertical-align: top;
         text-align: center; }
+        #header .hc-place .hc-menu .btn-icn.active {
+          background-color: rgba(0, 0, 0, 0.34); }
       #header .hc-place .hc-menu .create {
         display: inline-block;
         vertical-align: top; }
@@ -2370,6 +2372,8 @@ a {
         text-transform: uppercase;
         color: rgba(225, 225, 225, 0.84); }
         #header .hc-place .hc-list li:hover {
+          color: #fff; }
+        #header .hc-place .hc-list li.active {
           color: #fff; }
     #header .hc-place #all-ctr:hover {
       cursor: pointer; }
@@ -2407,7 +2411,17 @@ a {
         display: block;
         font-size: 14px;
         font-weight: 600;
-        text-transform: none; }
+        text-transform: none;
+        display: grid;
+        display: -ms-grid;
+        grid-template-columns: 30px 1fr;
+        -ms-grid-columns: 30px 1fr; }
+        #header .hc-place .ctr .tag .col-1 {
+          grid-column: 1;
+          -ms-grid-column: 1; }
+        #header .hc-place .ctr .tag .col-2 {
+          grid-column: 2;
+          -ms-grid-column: 2; }
         #header .hc-place .ctr .tag a {
           color: #fff; }
           #header .hc-place .ctr .tag a:hover {
@@ -2540,12 +2554,14 @@ a {
 #body .post {
   /*@include col_full();
   @include col_masonry(4);*/
-  position: relative;
-  width: calc(100% - 30px);
-  margin: auto;
+  width: 1300px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   margin-top: 15px; }
+  @media (max-width: 800px) {
+    #body .post {
+      width: calc(100% - 20px); } }
   @media (max-width: 800px) {
     #body .post {
       margin-top: 10px;

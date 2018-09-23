@@ -6,7 +6,14 @@
 <div class="col-700px padding-top-20px">
 	<form action="javascript:void" method="get" id="place-search">
 		<div class="place-search padding-top-10px">
-			<input type="text" name="q" class="txt-search" id="txt-search" placeholder="Search designs.." required="true" value="{{ $ctr }}">
+			<input 
+				type="text" 
+				name="q" 
+				class="txt-search" 
+				id="txt-search" 
+				placeholder="Search CocaCode..." 
+				required="true" 
+				value="{{ $ctr }}">
 			<button type="submit" class="btn-search">
 				<span class="fa fa-lg fa-search"></span>
 			</button>

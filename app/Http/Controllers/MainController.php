@@ -39,6 +39,7 @@ class MainController extends Controller
         $topStory = StoryModel::PagAllStory(20);
         return view('home.landing', [
             'title' => 'Its a place for designer',
+            'nav' => 'designs',
             'path' => 'fresh',
             'topStory' => $topStory
         ]);
@@ -50,6 +51,7 @@ class MainController extends Controller
         $topStory = StoryModel::PagTimelinesStory(20, $profile);
         return view('home.landing', [
             'title' => 'Timelines',
+            'nav' => 'designs',
             'path' => 'timelines',
             'topStory' => $topStory
         ]);
@@ -59,6 +61,7 @@ class MainController extends Controller
         $topStory = StoryModel::PagPopularStory(20);
         return view('home.landing', [
             'title' => 'Popular',
+            'nav' => 'designs',
             'path' => 'popular',
             'topStory' => $topStory
         ]);
@@ -68,6 +71,7 @@ class MainController extends Controller
         $topStory = StoryModel::PagAllStory(20);
         return view('home.landing', [
             'title' => 'Fresh',
+            'nav' => 'designs',
             'path' => 'fresh',
             'topStory' => $topStory
         ]);
@@ -77,6 +81,7 @@ class MainController extends Controller
         $topStory = StoryModel::PagTrendingStory(20);
         return view('home.landing', [
             'title' => 'Trending',
+            'nav' => 'designs',
             'path' => 'trending',
             'topStory' => $topStory
         ]);
@@ -96,6 +101,7 @@ class MainController extends Controller
         return view('collections.index', [
             'title' => 'Collections',
             'path' => 'collections',
+            'nav' => 'all-ctr',
             'topStory' => $topStory,
             'topTags' => $topTags,
             'allTags' => $allTags,
@@ -112,6 +118,7 @@ class MainController extends Controller
         return view('others.index', [
             'title' => $ctr,
             'path' => 'none',
+            'nav' => 'all-ctr',
             'topStory' => $topStory
         ]);
     }
@@ -137,6 +144,7 @@ class MainController extends Controller
         return view('main.category', [
             'title' => 'Categories ',
             'path' => 'category',
+            'nav' => 'all-ctr',
             'topUsers' => $topUsers,
             'topTags' => $topTags,
             'allTags' => $allTags
@@ -159,6 +167,7 @@ class MainController extends Controller
             return view('search.index', [
                 'title' => $ctr,
                 'ctr' => $ctr,
+                'nav' => 'search',
                 'path' => 'home-search',
                 'topStory' => $topStory,
                 'topUsers' => $topUsers,
@@ -171,6 +180,7 @@ class MainController extends Controller
             return view('search.index', [
                 'title' => 'Search',
                 'ctr' => '',
+                'nav' => 'search',
                 'path' => 'home-search',
                 'trendingTags' => $trendingTags,
                 'topStory' => $topStory
@@ -193,6 +203,7 @@ class MainController extends Controller
             return view('search.index', [
                 'title' => $ctr,
                 'ctr' => $ctr,
+                'nav' => 'search',
                 'path' => 'home-search',
                 'topStory' => $topStory,
                 'topUsers' => $topUsers,
@@ -205,6 +216,7 @@ class MainController extends Controller
             return view('search.index', [
                 'title' => 'Search',
                 'ctr' => '',
+                'nav' => 'search',
                 'path' => 'home-search',
                 'trendingTags' => $trendingTags,
                 'topStory' => $topStory
@@ -214,7 +226,11 @@ class MainController extends Controller
 
     function composeStory()
     {
-        return view('compose.story', ['title' => 'New Story', 'path' => 'compose']);
+        return view('compose.story', [
+            'title' => 'New Story', 
+            'path' => 'compose', 
+            'nav' => 'compose'
+        ]);
     }
 
 

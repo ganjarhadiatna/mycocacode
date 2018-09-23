@@ -23,7 +23,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'title' => 'User Profile',
             'path' => 'profile',
-            'nav' => 'story',
+            'nav' => 'profile',
             'profile' => $profile,
             'userStory' => $userStory
         ]);
@@ -42,7 +42,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'title' => 'User Profile',
             'path' => $pathProfile,
-            'nav' => 'story',
+            'nav' => 'profile',
             'profile' => $profile,
             'userStory' => $userStory,
             'statusFolow' => $statusFolow
@@ -62,7 +62,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'title' => 'User Profile',
             'path' => $pathProfile,
-            'nav' => 'bookmark',
+            'nav' => 'profile',
             'profile' => $profile,
             'userStory' => $userStory,
             'statusFolow' => $statusFolow
@@ -77,6 +77,7 @@ class ProfileController extends Controller
         return view('profile.edit.profile-picture', [
             'title' => 'Profile Setting',
             'path' => 'profile-picture',
+            'nav' => 'profile',
             'profile' => $profile
         ]);
     }
@@ -88,6 +89,7 @@ class ProfileController extends Controller
         return view('profile.edit.info-public', [
             'title' => 'Edit Profile',
             'path' => 'public-informations',
+            'nav' => 'profile',
             'profile' => $profile
         ]);
     }
@@ -98,6 +100,7 @@ class ProfileController extends Controller
         return view('profile.edit.info-private', [
             'title' => 'Edit Profile',
             'path' => 'private-informations',
+            'nav' => 'profile',
             'profile' => $profile
         ]);
     }
@@ -108,6 +111,7 @@ class ProfileController extends Controller
         return view('profile.edit.password', [
             'title' => 'Change Password',
             'path' => 'change-password',
+            'nav' => 'profile',
             'profile' => $profile
         ]);
     }

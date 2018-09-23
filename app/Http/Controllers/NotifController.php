@@ -52,6 +52,7 @@ class NotifController extends Controller
         $notif = NotifModel::GetNotifS($id, 20);
         return view('profile.notifications', [
             'title' => 'Notifications',
+            'nav' => 'notif',
             'path' => 'notif',
             'notif' => $notif
         ]);

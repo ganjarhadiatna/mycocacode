@@ -36,6 +36,7 @@ class StoryController extends Controller
             return view('story.index', [
                 'title' => 'Story',
                 'path' => 'none',
+                'nav' => 'story',
                 'getStory' => $getStory,
                 'newStory' => $newStory,
                 'tags' => $tags,

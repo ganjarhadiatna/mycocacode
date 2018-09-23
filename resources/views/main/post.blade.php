@@ -20,7 +20,7 @@
 			<a href="{{ url('/story/'.$story->idstory) }}">
 				<div class="cover-theme">
 					<div class="cover">
-						<div class="desc ctn-main-font ctn-14px ctn-white-color ctn-thin">
+						<div class="desc ctn-main-font ctn-14px ctn-sek-color ctn-thin">
 							{{ $story->description }}
 						</div>
 					</div>

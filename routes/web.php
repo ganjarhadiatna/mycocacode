@@ -19,6 +19,7 @@ Route::get('*', function () {
     ]);
 });
 Route::get('/', 'MainController@index');
+Route::get('/designs', 'MainController@index');
 Route::get('/test', 'MainController@test');
 Route::get('/home', 'MainController@index');
 Route::get('/tags/{ctr}', 'MainController@tagsId');
