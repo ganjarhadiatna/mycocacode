@@ -9,7 +9,7 @@
 			?>
 			<div class="tag">
 				<div class="col-1">
-					<span class="far fa-1x fa-circle"></span>
+					<span class="far fa-1x fa-circle" style="font-size: 7.5pt;"></span>
 				</div>
 				<div class="col-2">
 					<a href="{{ url('/tags/'.$title) }}">
