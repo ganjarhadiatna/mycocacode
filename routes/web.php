@@ -18,10 +18,12 @@ Route::get('*', function () {
         'path' => 'none'
     ]);
 });
+
+//design
 Route::get('/', 'MainController@index');
 Route::get('/designs', 'MainController@index');
-Route::get('/test', 'MainController@test');
 Route::get('/home', 'MainController@index');
+Route::get('/make-apps', 'MainController@makeApps');
 Route::get('/tags/{ctr}', 'MainController@tagsId');
 Route::get('/category/{ctr}', 'MainController@ctrId');
 Route::get('/categories', 'MainController@ctr');
@@ -34,6 +36,18 @@ Route::get('/story/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/story/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/s/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/image/{idimage}', 'ImageController@detail')->where(['idimage' => '[0-9]+']);
+
+//news
+Route::get('/news', 'NewsController@index');
+Route::get('/news/fresh', 'NewsController@freh');
+Route::get('/news/trending', 'NewsController@trending');
+Route::get('/news/popular', 'NewsController@popular');
+
+//lives
+Route::get('/lives', 'LiveController@index');
+Route::get('/lives/fresh', 'LiveController@freh');
+Route::get('/lives/trending', 'LiveController@trending');
+Route::get('/lives/popular', 'LiveController@popular');
 
 /*user*/
 Route::get('/user/{iduser}', 'ProfileController@story')->where(['iduser' => '[0-9]+']);
@@ -69,7 +83,14 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/me/setting/password', 'ProfileController@profileSettingPassword');
 
+    //design
     Route::get('/timelines', 'MainController@timelines');
+
+    //news
+    Route::get('/news/timelines', 'NewsController@timelines');
+
+    //lives
+    Route::get('/lives/timelines', 'LiveController@timelines');
 
     Route::post('/save/publicInformations', 'ProfileController@savePublicInformations');
     Route::post('/save/privateInformations', 'ProfileController@savePrivateInformations');

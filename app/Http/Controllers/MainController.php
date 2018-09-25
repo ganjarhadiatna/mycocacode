@@ -37,19 +37,21 @@ class MainController extends Controller
     function index()
     {
         $topStory = StoryModel::PagAllStory(20);
-        return view('home.landing', [
+        return view('design.index', [
             'title' => 'Its a place for designer',
             'nav' => 'designs',
             'path' => 'fresh',
             'topStory' => $topStory
         ]);
     }
+
+    //design
     function timelines()
     {
         $id = Auth::id();
         $profile = FollowModel::GetAllFollowing($id);
         $topStory = StoryModel::PagTimelinesStory(20, $profile);
-        return view('home.landing', [
+        return view('design.index', [
             'title' => 'Timelines',
             'nav' => 'designs',
             'path' => 'timelines',
@@ -59,7 +61,7 @@ class MainController extends Controller
     function popular()
     {
         $topStory = StoryModel::PagPopularStory(20);
-        return view('home.landing', [
+        return view('design.index', [
             'title' => 'Popular',
             'nav' => 'designs',
             'path' => 'popular',
@@ -69,7 +71,7 @@ class MainController extends Controller
     function fresh()
     {
         $topStory = StoryModel::PagAllStory(20);
-        return view('home.landing', [
+        return view('design.index', [
             'title' => 'Fresh',
             'nav' => 'designs',
             'path' => 'fresh',
@@ -79,11 +81,20 @@ class MainController extends Controller
     function trending()
     {
         $topStory = StoryModel::PagTrendingStory(20);
-        return view('home.landing', [
+        return view('design.index', [
             'title' => 'Trending',
             'nav' => 'designs',
             'path' => 'trending',
             'topStory' => $topStory
+        ]);
+    }
+
+    function makeApps()
+    {
+        return view('featured.makeapps', [
+            'title' => 'Make Apps',
+            'nav' => 'makeapps',
+            'path' => 'makeapps',
         ]);
     }
 

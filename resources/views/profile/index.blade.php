@@ -73,11 +73,25 @@
 							</a>
 						</li>
 						<li>
+							<a href="{{ url('/user/'.$p->id.'/story') }}">
+								<div class="val">{{ $p->ttl_story }}</div>
+								<div class="ttl">Lives</div>
+							</a>
+						</li>
+						<li>
+							<a href="{{ url('/user/'.$p->id.'/story') }}">
+								<div class="val">{{ $p->ttl_story }}</div>
+								<div class="ttl">News</div>
+							</a>
+						</li>
+						<!--
+						<li>
 							<a href="{{ url('/user/'.$p->id.'/save') }}">
 								<div class="val">{{ $p->ttl_save }}</div>
 								<div class="ttl">Saves</div>
 							</a>
 						</li>
+						-->
 					</ul>
 				</div>
 			</div>

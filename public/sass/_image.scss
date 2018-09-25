@@ -70,6 +70,9 @@
 	&.image-circle {
 		border-radius: 100%;
 	}
+	&.image-center {
+		margin: auto;
+	}
 	.icn {
 		@include post_center();
 		color: $txt-sek-color;

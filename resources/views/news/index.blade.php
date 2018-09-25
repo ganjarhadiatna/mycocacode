@@ -10,33 +10,42 @@
 	});
 </script>
 
-<div class="banner">
-	<h1>It's A Place For Designers To Sit Down</h1>
+<div 
+	class="banner banner-image"
+	style="
+		background-image: url('{{ asset('/img/sites/intro-1600.jpg') }}');
+	" >
 	<div class="padding-20px">
-		@include('main.search')
+		<h1>Share News With Other Designers</h1>
+		<h3>Find your inspirations here.</h3>
+		<div class="padding-20px">
+			<button class="btn btn-main-color btn-radius">
+				Create News
+			</button>
+		</div>
 	</div>
 </div>
 
 <div>
 	<div class="nav-post">
 		<ul>
-			<a href="{{ url('/fresh') }}" id="fresh">
+			<a href="{{ url('/news/fresh') }}" id="fresh">
 				<li>
 					Fresh
 				</li>
 			</a>
-			<a href="{{ url('/trending') }}" id="trending">
+			<a href="{{ url('/news/trending') }}" id="trending">
 				<li>
 					Trending
 				</li>
 			</a>
-			<a href="{{ url('/popular') }}" id="popular">
+			<a href="{{ url('/news/popular') }}" id="popular">
 				<li>
 					Popular
 				</li>
 			</a>
 			@if (Auth::id())
-				<a href="{{ url('/timelines') }}" id="timelines">
+				<a href="{{ url('/news/timelines') }}" id="timelines">
 					<li>
 						Timelines
 					</li>
@@ -45,18 +54,7 @@
 		</ul>
 	</div>
 	<div>
-		@if (count($topStory) == 0)
-			@include('main.post-empty')	
-		@else
-			<div class="post">
-				@foreach ($topStory as $story)
-					@include('main.post')
-				@endforeach
-			</div>
-			<div>
-				{{ $topStory->links() }}
-			</div>
-		@endif
+		<h2>Content</h2>
 	</div>
 </div>
 @endsection

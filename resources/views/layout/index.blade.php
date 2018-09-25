@@ -253,6 +253,20 @@
 					    		News
 					    	</li>
 					    </a>
+						<a href="{{ url('/make-apps') }}">
+							<li id="makeapps">
+					    		Make Apps
+					    		<span 
+					    			class="fa fa-1x fa-circle"
+					    			style="
+					    				position: relative;
+					    				top: -2.5px;
+					    				font-size: 7.5px;
+					    				color: #529ecc;
+					    			" ></span>
+					    	</li>
+					    </a>
+					    <!--
 					    <li id="all-ctr">
 					    	<span>Explore</span>
 					    	<span class="fa fa-lg fa-angle-down"></span>
@@ -260,12 +274,7 @@
 							    @include('main.ctr')
 							</div>
 					    </li>
-					    <a href="{{ url('/jobs') }}">
-							<li id="jobs">
-								<span class="fa fa-1x fa-th-large"></span>
-					    		Make Apps
-					    	</li>
-					    </a>
+						-->
 					</ul>
 					
 				</div>
@@ -287,6 +296,11 @@
 							</button>
 						</a>
 					@else
+						<a href="{{ url('/search') }}">
+							<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
+								<span class="fas fa-lg fa-bookmark"></span>
+							</button>
+						</a>
 						<a href="{{ url('/me/notifications') }}">
 							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
 								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
