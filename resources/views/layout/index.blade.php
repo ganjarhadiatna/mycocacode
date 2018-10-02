@@ -19,7 +19,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- ICON -->
-    <link href="{{ asset('/img/C.png') }}" rel='SHORTCUT ICON'/>
+    <link href="{{ asset('img/C.png') }}" rel='SHORTCUT ICON'/>
 
 	<!-- SASS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/css/fontawesome-all.min.css') }}">
