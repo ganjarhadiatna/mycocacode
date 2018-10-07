@@ -296,12 +296,12 @@
 							</button>
 						</a>
 					@else
-						<a href="{{ url('/search') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
+						<a href="{{ url('/saved') }}">
+							<button class="btn-icn btn btn-circle btn-main2-color" id="saved" key="hide">
 								<span class="fas fa-lg fa-bookmark"></span>
 							</button>
 						</a>
-						<a href="{{ url('/me/notifications') }}">
+						<a href="{{ url('/notifications') }}">
 							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
 								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
 								<span class="fas fa-lg fa-bell"></span>

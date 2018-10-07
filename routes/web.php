@@ -73,7 +73,6 @@ Route::middleware('auth')->group(function() {
 
 	/*profile*/
 	Route::get('/me', 'ProfileController@profile');
-    Route::get('/me/notifications', 'NotifController@notifications');
     Route::get('/me/setting', 'ProfileController@profileSetting');
     
     Route::get('/me/setting/profile', 'ProfileController@profileSettingProfile');
@@ -82,6 +81,12 @@ Route::middleware('auth')->group(function() {
     Route::get('/me/setting/info/private', 'ProfileController@profileSettingInfoPrivate');
 
     Route::get('/me/setting/password', 'ProfileController@profileSettingPassword');
+
+    //notifications
+    Route::get('/notifications', 'NotifController@notifications');
+
+    //saved
+    Route::get('/saved', 'ProfileController@save');
 
     //design
     Route::get('/timelines', 'MainController@timelines');

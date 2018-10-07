@@ -63,4 +63,14 @@ class DesignController extends Controller
             'topStory' => $topStory
         ]);
     }
+    function trending()
+    {
+        $topStory = StoryModel::PagTrendingStory(20);
+        return view('design.index', [
+            'title' => 'Trending',
+            'nav' => 'designs',
+            'path' => 'trending',
+            'topStory' => $topStory
+        ]);
+    }
 }

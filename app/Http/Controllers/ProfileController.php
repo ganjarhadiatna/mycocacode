@@ -11,6 +11,7 @@ use App\StoryModel;
 use App\ProfileModel;
 use App\FollowModel;
 use App\TagModel;
+use App\BookmarkModel;
 
 class ProfileController extends Controller
 {
@@ -48,24 +49,22 @@ class ProfileController extends Controller
             'statusFolow' => $statusFolow
         ]);
 	}
-	function save($id)
+	function save()
 	{
 		$iduser = Auth::id();
-		if ($iduser == $id) {
-			$pathProfile = 'profile';
+		if ($iduser) {
+			$path = 'design';
 		} else {
-			$pathProfile = 'none';
+			$path = 'none';
 		}
-        $profile = ProfileModel::UserData($id);
-        $userStory = StoryModel::PagUserBookmark(20, $id);
-        $statusFolow = FollowModel::Check($id, $iduser);
-        return view('profile.index', [
-            'title' => 'User Profile',
-            'path' => $pathProfile,
-            'nav' => 'profile',
-            'profile' => $profile,
-            'userStory' => $userStory,
-            'statusFolow' => $statusFolow
+        $total = BookmarkModel::Total($iduser);
+        $topStory = StoryModel::PagUserBookmark(20, $iduser);
+        return view('bookmark.design', [
+            'title' => 'My Saved',
+            'path' => $path,
+            'nav' => 'saved',
+            'total' => $total,
+            'topStory' => $topStory
         ]);
 	}
 
