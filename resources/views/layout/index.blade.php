@@ -1,4 +1,5 @@
 <?php use App\ProfileModel; ?>
+
 <?php
 	if (isset($nav)) {
 		$nowNav = $nav;
@@ -308,7 +309,7 @@
 							</button>
 						</a>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
-							<a href="{{ url('/user/'.$dt->id) }}">
+							<a href="{{ url('/me') }}">
 								<button class="btn-icn btn btn-circle btn-main2-color btn-radius" id="profile">
 									<div 
 										class="image image-30px image-circle"

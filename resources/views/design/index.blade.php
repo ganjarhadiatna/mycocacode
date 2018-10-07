@@ -3,6 +3,8 @@
 @section('path', $path)
 @section('content')
 
+<?php use App\TagModel; ?>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var path = '{{ $path }}';
@@ -42,9 +44,17 @@
 				<a href="{{ url('/timelines') }}" id="timelines">
 					<li>
 						Timelines
+
 					</li>
 				</a>
 			@endif
+			@foreach (TagModel::TopTags(5) as $ctr)
+				<a href="{{ url('/explore/'.$ctr->idtags) }}" id="explore-{{ $ctr->idtags }}">
+					<li style="text-transform: capitalize;">
+						{{ $ctr->tag }}
+					</li>
+				</a>
+			@endforeach
 		</ul>
 	</div>
 	<div>

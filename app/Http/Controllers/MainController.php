@@ -88,6 +88,17 @@ class MainController extends Controller
             'topStory' => $topStory
         ]);
     }
+    function explore($idtags)
+    {
+        $ctr = TagModel::GetTagBYId($idtags);
+        $topStory = StoryModel::PagTagStory($ctr, 20);
+        return view('design.index', [
+            'title' => 'Explore '.$ctr,
+            'nav' => 'designs',
+            'path' => 'explore-'.$idtags,
+            'topStory' => $topStory
+        ]);
+    }
 
     function makeApps()
     {
@@ -125,7 +136,7 @@ class MainController extends Controller
     }
     function tagsId($ctr)
     {
-        $topStory = StoryModel::PagTagStory($ctr, 12);
+        $topStory = StoryModel::PagTagStory($ctr, 20);
         return view('others.index', [
             'title' => $ctr,
             'path' => 'none',
@@ -135,7 +146,7 @@ class MainController extends Controller
     }
     function ctrId($ctr)
     {
-        $topStory = StoryModel::PagCtrStory($ctr, 12);
+        $topStory = StoryModel::PagCtrStory($ctr, 20);
         return view('others.index', [
             'title' => 'Category '.$ctr,
             'path' => 'none',

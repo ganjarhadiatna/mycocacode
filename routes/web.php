@@ -30,6 +30,7 @@ Route::get('/categories', 'MainController@ctr');
 Route::get('/popular', 'MainController@popular');
 Route::get('/fresh', 'MainController@fresh');
 Route::get('/trending', 'MainController@trending');
+Route::get('/explore/{idtags}', 'MainController@explore');
 Route::get('/search/{ctr}', 'MainController@search');
 Route::get('/search', 'MainController@searchNormal');
 Route::get('/story/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
