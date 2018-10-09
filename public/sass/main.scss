@@ -197,7 +197,7 @@ a {
 				width: calc(100% - 20px);
 			}
 
-			@include grid_3x(150px, 1fr, 1fr);
+			@include grid_2x(150px, 1fr);
 			
 			@media (max-width: $max-width) {
 				@include grid_2x(120px, 1fr);
@@ -208,22 +208,67 @@ a {
 			}
 
 			.col-2 {
-				position: relative;
 				@include column_n(2);
-				@media (max-width: $max-width) {
-					/*position: fixed;
-					top: 55px;
-					left: 0;
-					width: 100%;
-					background-color: #333;*/
-					display: none;
-				}
-			}
-			.col-3 {
-				@include column_n(3);
 				text-align: right;
 				@media (max-width: $max-width) {
+					//display: none;
+				}
+			}
+			.col-bar {
+				display: none;
+				@media (max-width: $max-width) {
+					display: block;
+				}
+			}
+			.col-mobile {
+				position: relative;
+				width: 100%;
+				@include grid_2x(1fr, 1fr);
+				@media (max-width: $max-width) {
+					position: fixed;
+					top: 0;
+					right: 0;
+					width: 300px;
+					height: 100vh;
+					background-color: #333;
+					display: none;
+
+				}
+				&.op-col-mobile {
+					&:before {
+						display: none;
+					}
+					@media (max-width: $max-width) {
+						display: block;
+						-webkit-transition: all .25s ease;
+						   -moz-transition: all .25s ease;
+						    -ms-transition: all .25s ease;
+						     -o-transition: all .25s ease;
+						        transition: all .25s ease;
+					}
+				}
+				.col-2-1 {
+					@include column_n(1);
+					@media (max-width: $max-width) {
+						border-bottom: 0.25px #fff solid;
+					}
+				}
+				.col-2-2 {
 					@include column_n(2);
+					text-align: right;
+					@media (max-width: $max-width) {
+						//border-bottom: 0.25px #fff solid;
+					}
+				}
+				.col-mobile-header {
+					display: none;
+					@media (max-width: $max-width) {
+						position: relative;
+						width: calc(100% - 20px);
+						padding: 7.5px 10px;
+						border-bottom: 0.25px #fff solid;
+						display: block;
+					}
 				}
 			}
 			.logo {
@@ -244,12 +289,20 @@ a {
 				&.active {
 					background-color: rgba($color: #000000, $alpha: 0.34)
 				}
+				@media (max-width: $max-width) {
+					position: relative;
+					width: 25%;
+					height: 60px;
+					float: left;
+					border-radius: 0;
+				}
 			}
 			.create {
 				display: inline-block;
 				vertical-align: top;
+				margin-left: 20px;
 				@media (max-width: $max-width) {
-					position: fixed;
+					/*position: fixed;
 
 					right: 10px;
 					bottom: 10px;
@@ -258,11 +311,17 @@ a {
 					height: 45px;
 					padding: 0 0;
 
-					z-index: 100;
+					z-index: 100;*/
+					position: relative;
+					width: 100%;
+					height: 60px;
+					border-radius: 0;
+					border-top: 0.25px #fff solid;
+					margin: 0 0;
 				}
 				.ttl {
 					@media (max-width: $max-width) {
-						display: none;
+						//display: none;
 					}
 				}
 			}
@@ -270,14 +329,10 @@ a {
 		.hc-list {
 			position: relative;
 			width: 100%;
-			height: 45px;
 			overflow: hidden;
 			li {
 				position: relative;
 				height: 45px;
-				
-				//width: 25%;
-				//padding: 12.5px 0;
 				padding: 12.5px 15px;
 
 				text-align: center;
@@ -295,6 +350,15 @@ a {
 				}
 				&.active {
 					color: #fff;
+				}
+				@media (max-width: $max-width) {
+					position: relative;
+					width: 100%;
+					height: 45px;
+					line-height: 45px;
+					width: calc(100% - 30px);
+					padding: 5px 15px;
+					text-align: left;
 				}
 			}
 		}

@@ -185,6 +185,15 @@
 			}
 		}
 
+		function opColMobile(stt) {
+			if (stt == 'show') {
+				$('#col-mobile').addClass('op-col-mobile');
+			} else {
+				$('#col-mobile').removeClass('op-col-mobile');
+			}
+			console.log(stt);
+		}
+
 		window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
@@ -238,95 +247,105 @@
 					</div>
 				</div>
 				<div class="col-2">
-					<ul class="hc-list">
-						<a href="{{ url('/designs') }}">
-					    	<li id="designs">
-					    		Designs
-					    	</li>
-					    </a>
-						<a href="{{ url('/lives') }}">
-							<li id="lives">
-					    		Lives
-					    	</li>
-					    </a>
-					    <a href="{{ url('/news') }}">
-							<li id="news">
-					    		News
-					    	</li>
-					    </a>
-						<a href="{{ url('/make-apps') }}">
-							<li id="makeapps">
-					    		Make Apps
-					    		<span 
-					    			class="fa fa-1x fa-circle"
-					    			style="
-					    				position: relative;
-					    				top: -2.5px;
-					    				font-size: 7.5px;
-					    				color: #529ecc;
-					    			" ></span>
-					    	</li>
-					    </a>
-					    <!--
-					    <li id="all-ctr">
-					    	<span>Explore</span>
-					    	<span class="fa fa-lg fa-angle-down"></span>
-					    	<div id="pl-ctr">
-							    @include('main.ctr')
-							</div>
-					    </li>
-						-->
-					</ul>
-					
-				</div>
-				<div class="col-3">
-					<a href="{{ url('/search') }}">
-						<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
-							<span class="fas fa-lg fa-search"></span>
+					<div class="col-bar">
+						<button 
+							class="btn btn-radius btn-main2-color"
+							onclick="opColMobile('show')">
+							<span class="fa fa-lg fa-bars"></span>
+							<span>Menu</span>
 						</button>
-					</a>
-					@if (!Auth::id())
-						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-sekunder-color btn-no-border" style="margin-left: 15px; margin-bottom: 15px;">
-								<span>LOGIN</span>
+					</div>
+					<div class="col-mobile" id="col-mobile">
+						<div class="col-mobile-header">
+							<button 
+								class="btn btn-radius btn-main2-color"
+								onclick="opColMobile('hide')">
+								<span class="fa fa-lg fa-times"></span>
+								<span>Close</span>
 							</button>
-						</a>
-						<a href="{{ url('/register') }}" style="margin-left: 5px;">
-							<button class="btn btn-main-color">
-								<span>REGISTER</span>
-							</button>
-						</a>
-					@else
-						<a href="{{ url('/saved') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="saved" key="hide">
-								<span class="fas fa-lg fa-bookmark"></span>
-							</button>
-						</a>
-						<a href="{{ url('/notifications') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
-								<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
-								<span class="fas fa-lg fa-bell"></span>
-							</button>
-						</a>
-						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
-							<a href="{{ url('/me') }}">
-								<button class="btn-icn btn btn-circle btn-main2-color btn-radius" id="profile">
-									<div 
-										class="image image-30px image-circle"
-										style="
-											background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});
-											margin: auto;"
-										id="profile"></div>
+						</div>
+						<div class="col-2-1">
+							<ul class="hc-list">
+								<a href="{{ url('/designs') }}">
+							    	<li id="designs">
+							    		Designs
+							    	</li>
+							    </a>
+								<a href="{{ url('/lives') }}">
+									<li id="lives">
+							    		Lives
+							    	</li>
+							    </a>
+							    <a href="{{ url('/news') }}">
+									<li id="news">
+							    		News
+							    	</li>
+							    </a>
+								<a href="{{ url('/make-apps') }}">
+									<li id="makeapps">
+							    		Make Apps
+							    		<span 
+							    			class="fa fa-1x fa-circle"
+							    			style="
+							    				position: relative;
+							    				top: -2.5px;
+							    				font-size: 7.5px;
+							    				color: #529ecc;
+							    			" ></span>
+							    	</li>
+							    </a>
+							</ul>
+						</div>
+						<div class="col-2-2">
+							<a href="{{ url('/search') }}">
+								<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
+									<span class="fas fa-lg fa-search"></span>
 								</button>
 							</a>
-						@endforeach
-						<a href="{{ url('/compose') }}">
-							<button class="create btn btn-radius btn-main-color" id="op-add" key="hide" style="margin-left: 20px;">
-								<span class="fas fa-lg fa-plus"></span>
-								<span class="ttl">Create Design</span>
-							</button>
-						</a>
-					@endif
+							@if (!Auth::id())
+								<a href="{{ url('/login') }}">
+									<button class="btn-icn btn btn-sekunder-color btn-no-border" style="margin-left: 15px; margin-bottom: 15px;">
+										<span>LOGIN</span>
+									</button>
+								</a>
+								<a href="{{ url('/register') }}" style="margin-left: 5px;">
+									<button class="btn btn-main-color">
+										<span>REGISTER</span>
+									</button>
+								</a>
+							@else
+								<a href="{{ url('/saved') }}">
+									<button class="btn-icn btn btn-circle btn-main2-color" id="saved" key="hide">
+										<span class="fas fa-lg fa-bookmark"></span>
+									</button>
+								</a>
+								<a href="{{ url('/notifications') }}">
+									<button class="btn-icn btn btn-circle btn-main2-color" id="notif" key="hide">
+										<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
+										<span class="fas fa-lg fa-bell"></span>
+									</button>
+								</a>
+								@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
+									<a href="{{ url('/me') }}">
+										<button class="btn-icn btn btn-circle btn-main2-color btn-radius" id="profile">
+											<div 
+												class="image image-30px image-circle"
+												style="
+													background-image: url({{ asset('/profile/thumbnails/'.$dt->foto) }});
+													margin: auto;"
+												id="profile"></div>
+										</button>
+									</a>
+								@endforeach
+								<a href="{{ url('/compose') }}">
+									<button class="create btn btn-radius btn-main-color" id="op-add" key="hide">
+										<span class="fas fa-lg fa-plus"></span>
+										<span class="ttl">Create Design</span>
+									</button>
+								</a>
+							@endif
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
