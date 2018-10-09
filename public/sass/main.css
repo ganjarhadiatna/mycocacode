@@ -2421,6 +2421,16 @@ a {
           -o-transform: translate(0, -50%);
           transform: translate(0, -50%);
           width: 100%; }
+      #header .hc-place .hc-menu .btn-icn-rgs {
+        margin-left: 15px; }
+        @media (max-width: 800px) {
+          #header .hc-place .hc-menu .btn-icn-rgs {
+            position: relative;
+            width: calc(75% / 2);
+            height: 60px;
+            float: left;
+            border-radius: 0;
+            margin: 0 0; } }
       #header .hc-place .hc-menu .btn-icn {
         display: inline-block;
         vertical-align: top;

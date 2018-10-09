@@ -304,12 +304,12 @@
 							</a>
 							@if (!Auth::id())
 								<a href="{{ url('/login') }}">
-									<button class="btn-icn btn btn-sekunder-color btn-no-border" style="margin-left: 15px; margin-bottom: 15px;">
+									<button class="btn-icn-rgs btn btn-sekunder-color btn-no-border">
 										<span>LOGIN</span>
 									</button>
 								</a>
-								<a href="{{ url('/register') }}" style="margin-left: 5px;">
-									<button class="btn btn-main-color">
+								<a href="{{ url('/register') }}">
+									<button class="btn-icn-rgs btn btn-main-color">
 										<span>REGISTER</span>
 									</button>
 								</a>

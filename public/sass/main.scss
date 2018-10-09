@@ -282,6 +282,18 @@ a {
 					width: 100%;
 				}
 			}
+			.btn-icn-rgs {
+				margin-left: 15px;
+				@media (max-width: $max-width) {
+					position: relative;
+					width: calc(75% / 2);
+					height: 60px;
+					float: left;
+					border-radius: 0;
+					margin: 0 0;
+				}
+
+			}
 			.btn-icn {
 				display: inline-block;
 				vertical-align: top;
