@@ -693,6 +693,19 @@ a {
 	    		margin: 5px;
 	    	}
 	    }
+
+	    .frame-lives {
+	    	width: calc(25% - 30px);
+	    	margin: 15px;
+	    	@media (max-width: $max-width) {
+	    		width: calc(50% - 10px);
+	    		margin: 5px;
+	    	}
+	    	@media (max-width: $min-width) {
+	    		width: calc(100% - 10px);
+	    		margin: 5px;
+	    	}
+	    }
 	}
 	.post-flex {
 		@include col_full();

@@ -33,8 +33,8 @@ Route::get('/trending', 'MainController@trending');
 Route::get('/explore/{idtags}', 'MainController@explore');
 Route::get('/search/{ctr}', 'MainController@search');
 Route::get('/search', 'MainController@searchNormal');
-Route::get('/story/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
-Route::get('/story/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
+Route::get('/design/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
+Route::get('/design/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/s/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/image/{idimage}', 'ImageController@detail')->where(['idimage' => '[0-9]+']);
 
@@ -104,13 +104,19 @@ Route::middleware('auth')->group(function() {
     Route::post('/save/password', 'ProfileController@savePassword');
 
     /*compose*/
-    Route::get('/compose', 'MainController@composeStory');
-    Route::get('/compose/story', 'MainController@composeStory');
+    Route::get('/compose', 'StoryController@compose');
+    Route::get('/compose/story', 'StoryController@compose');
+    Route::get('/compose/live', 'LiveController@compose');
+
+    //design
+    Route::get('/design/{idstory}/edit/{iduser}/{token}', 'StoryController@storyEdit');
     Route::post('/story/image/upload', 'ImageController@upload');
     Route::post('/story/publish', 'StoryController@publish');
-    Route::get('/story/{idstory}/edit/{iduser}/{token}', 'StoryController@storyEdit');
-    Route::post('/story/save/editting', 'StoryController@saveEditting');
-    Route::post('/story/delete', 'StoryController@deleteStory');
+    Route::post('/story/save/editting', 'StoryController@edit');
+    Route::post('/story/delete', 'StoryController@delete');
+
+    //live
+    Route::post('/live/publish', 'LiveController@publish');
 
     /*Follow*/
     Route::post('/follow/add', 'FollowController@add');

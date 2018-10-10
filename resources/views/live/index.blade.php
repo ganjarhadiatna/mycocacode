@@ -10,18 +10,16 @@
 	});
 </script>
 
-<div 
-	class="banner banner-image"
-	style="
-		background-image: url('{{ asset('/img/sites/intro-1600.jpg') }}');
-	" >
+<div class="banner">
 	<div class="padding-20px">
 		<h1>Share Videos With Other Designers</h1>
 		<h3>Find your inspirations here.</h3>
 		<div class="padding-20px">
-			<button class="btn btn-main-color btn-radius">
-				Create Videos
-			</button>
+			<a href="{{ url('/compose/live') }}">
+				<button class="btn btn-main-color btn-radius">
+					Create Videos
+				</button>
+			</a>
 		</div>
 	</div>
 </div>
@@ -54,7 +52,18 @@
 		</ul>
 	</div>
 	<div>
-		<h2>Content</h2>
+		@if (count($topLive) == 0)
+			@include('main.post-empty')	
+		@else
+			<div class="post">
+				@foreach ($topLive as $live)
+					@include('main.live')
+				@endforeach
+			</div>
+			<div>
+				{{ $topLive->links() }}
+			</div>
+		@endif
 	</div>
 </div>
 @endsection

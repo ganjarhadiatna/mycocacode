@@ -1,10 +1,10 @@
 <script type="text/javascript">
 	function viewPost(idstory, title) {
-		var server_post = '{{ url("/story/") }}'+'/'+idstory+'/'+title;
+		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/'+title;
 		window.location = server_post;
 	}
 	function editPost(idstory, iduser) {
-		var server_post = '{{ url("/story/") }}'+'/'+idstory+'/edit/'+iduser+'/{{ csrf_token() }}';
+		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/edit/'+iduser+'/{{ csrf_token() }}';
 		window.location = server_post;
 	}
 	function opQuestionPost(idstory) {

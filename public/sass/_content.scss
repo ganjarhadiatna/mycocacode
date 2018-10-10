@@ -257,7 +257,7 @@
 //compose
 .compose {
 	position: relative;
-	width: calc(760px - 40px);
+	width: calc(100% - 40px);
 
 	padding: 20px;
 
@@ -275,17 +275,16 @@
 	}
 
 	.cmp-main {
-		@include grid_2x(320px, 1fr);
-
+		@include grid_2x(1fr, 1fr);
 		@media (max-width: $max-width) {
+			@include grid_none();
+		}
+		&.no-grid {
 			@include grid_none();
 		}
 
 		.cmp-col-1 {
 			position: relative;
-			
-			width: 300px;
-			
 			@include column_n(1);
 
 			@media (max-width: $max-width) {
@@ -294,77 +293,77 @@
 				margin-bottom: 10px;
 				@include bdr_bottom();
 			}
-
-			.lbl-add-pict {
-				position: relative;
-				width: 200px;
-				height: 200px;
-				display: block;
-				cursor: pointer;
-			}
 			.pl-add {
 				@include post_center_relative();
-				width: 200px;
-				
 				@media (max-width: $max-width) {
 					@include post_none();
-				}
-
-				.warn {
-					padding-bottom: 5px;
-					display: none;
-				}
-			}
-			.add-pict {
-				position: relative;
-				width: 200px;
-				height: 200px;
-				background-color: rgba(225,225,225,0.34);
-				color: $txt-sek-color;
-
-				box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
-
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
-
-				&:hover {
-					background-color: rgba(225,225,225,0.54);
-					color: $txt-min-color;
-					cursor: pointer;
-				}
-
-				.icn {
-					@include post_center_relative();
-					font-size: 32px;
 				}
 			}
 		}
 		.cmp-col-2 {
 			@include column_n(2);
-
-			.mid {
-				.block-field {
-					.pan {
-						position: relative;
-						width: 100%;
-						color: $txt-sek-color;
-						font-size: 14px;
-						padding: 5px 0;
-						@include grid_2x(1fr, 100px);
-						.left {
-							@include column_n(1);
-						}
-						.right {
-							@include column_n(2);
-							text-align: right;
-						}
+		}
+		.mid {
+			//
+		}
+		.bot {
+			padding-top: 20px;
+			text-align: right;
+		}
+		.block-field {
+			.pan {
+				position: relative;
+				width: 100%;
+				color: $txt-sek-color;
+				font-size: 14px;
+				padding: 5px 0;
+				@include grid_2x(1fr, 100px);
+				.left {
+					@include column_n(1);
 					}
+					.right {
+					@include column_n(2);
+					text-align: right;
 				}
 			}
-			.bot {
-				padding-top: 20px;
-				text-align: right;
+		}
+		.lbl-add-pict {
+			@include post_center();
+			.icn {
+				position: relative;
+				top: 10px;
+			}
+		}
+		.pl-add {
+			.warn {
+				padding-bottom: 5px;
+				display: none;
+			}
+		}
+		.add-pict {
+			position: relative;
+			width: 100%;
+			padding-bottom: 100%;
+			background-color: rgba(225,225,225,0.34);
+			color: $txt-sek-color;
+			border: 1px rgba(0,0,0,0.1) solid;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			
+			&.half {
+				padding-bottom: 50%;
+			}
+
+			&:hover {
+				background-color: rgba(225,225,225,0.54);
+				color: $txt-min-color;
+				cursor: pointer;
+			}
+
+			.icn {
+				@include post_center();
+				font-size: 32px;
 			}
 		}
 	}

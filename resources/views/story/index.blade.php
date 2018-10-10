@@ -277,7 +277,7 @@
 									<span class="love-{{ $story->idstory }} non fa fa-lg fa-heart"></span>
 								</span>
 							@endif
-							<span>Like?</span>
+							<span>Like this?</span>
 						</div>
 						<div class="ctn">
 							<span>{{ $story->ttl_love }} likes</span>
@@ -295,7 +295,7 @@
 									<span class="bookmark-{{ $story->idstory }} non fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
 								</span>
 							@endif
-							<span>Save?</span>
+							<span>Save this?</span>
 						</div>
 						<div class="ctn">
 							<span>{{ $story->ttl_save }} saves</span>

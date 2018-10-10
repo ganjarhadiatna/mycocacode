@@ -96,88 +96,88 @@
 </div>
 
 @foreach ($getStory as $story)
-
-<div class="compose">
-	<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
-		<div class="cmp-main">
-			
-			<div class="cmp-col-1">
-
-				<div class="pl-add" id="add-pict">
-					<div class="warn ctn-main-font ctn-14px ctn-thin ctn-err-color"></div>
-					<div class="add-pict" style="background-image: url({{ asset('/story/thumbnails/'.$story->cover) }});"></div>
+<div class="width width-700px width-center">
+	<div class="compose">
+		<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
+			<div class="cmp-main">
+				
+				<div class="cmp-col-1">
+					<div class="pl-add" id="add-pict">
+						<div class="width width-200px width-center">
+							<div class="warn ctn-main-font ctn-14px ctn-thin ctn-err-color"></div>
+							<div class="add-pict" style="background-image: url({{ asset('/story/thumbnails/'.$story->cover) }});"></div>
+						</div>
+					</div>
 				</div>
 
-			</div>
-
-			<div class="cmp-col-2">
-				
-				<div class="top"></div>
-
-				<div class="mid">
+				<div class="cmp-col-2">
 					
-					<div class="block-field">
+					<div class="top"></div>
 
-						<div class="pan">
-							<div class="left">
-								<p class="ttl">Description</p>
-							</div>
-							<div class="right">
-								<div class="count">
-									<span id="desc-lg">0</span>/250
+					<div class="mid">
+						
+						<div class="block-field">
+
+							<div class="pan">
+								<div class="left">
+									<p class="ttl">Description</p>
+								</div>
+								<div class="right">
+									<div class="count">
+										<span id="desc-lg">0</span>/250
+									</div>
 								</div>
 							</div>
+
+							<textarea 
+								name="write-story" 
+								id="write-story" 
+								class="txt edit-text txt-main-color txt-box-shadow ctn ctn-main ctn-sans-serif"
+								placeholder="Write something..." 
+								maxlength="250"><?php echo $story->description; ?></textarea>
+
 						</div>
 
-						<textarea 
-							name="write-story" 
-							id="write-story" 
-							class="txt edit-text txt-main-color txt-box-shadow ctn ctn-main ctn-sans-serif"
-							placeholder="Write something..." 
-							maxlength="250"><?php echo $story->description; ?></textarea>
+						<div class="padding-5px"></div>
 
-					</div>
-
-					<div class="padding-5px"></div>
-
-					<div class="block-field place-tags">
-						
-						<div class="pan">
-							<div class="left">
-								<p class="ttl">Tags</p>
+						<div class="block-field place-tags">
+							
+							<div class="pan">
+								<div class="left">
+									<p class="ttl">Tags</p>
+								</div>
+								<div class="right"></div>
 							</div>
-							<div class="right"></div>
-						</div>
 
-						<div class="block-field">
-							<input type="text" name="tags" id="tags-story" class="tg txt txt-main-color txt-box-shadow" placeholder="Tags1, Tags2, Tags N..." value="{{ $tags }}">
+							<div class="block-field">
+								<input type="text" name="tags" id="tags-story" class="tg txt txt-main-color txt-box-shadow" placeholder="Tags1, Tags2, Tags N..." value="{{ $tags }}">
+							</div>
+
 						</div>
 
 					</div>
 
-				</div>
+					<div class="bot">
+						<input 
+							type="button" 
+							name="edit-save" 
+							class="btn btn-primary-color" 
+							value="Cancel" 
+							onclick="goBack()" 
+							style="margin-right: 10px;">
+						<input 
+							type="submit" 
+							name="save" 
+							class="btn btn-main-color" 
+							value="Post" 
+							id="btn-publish">
+					</div>
 
-				<div class="bot">
-					<input 
-						type="button" 
-						name="edit-save" 
-						class="btn btn-primary-color" 
-						value="Cancel" 
-						onclick="goBack()" 
-						style="margin-right: 10px;">
-					<input 
-						type="submit" 
-						name="save" 
-						class="btn btn-main-color" 
-						value="Post" 
-						id="btn-publish">
 				</div>
-
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>
-
 @endforeach
 
 @endsection

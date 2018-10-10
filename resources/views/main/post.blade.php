@@ -1,6 +1,5 @@
 <div class="frame-post">
 	<div class="mid">
-		<!--
 		<div class="bot-tool padding-bottom-10px">
 			<div class="nts">
 				<div class="pp">
@@ -15,9 +14,8 @@
 				</div>
 			</div>
 		</div>
-		-->
 		<div class="mid-tool">
-			<a href="{{ url('/story/'.$story->idstory) }}">
+			<a href="{{ url('/design/'.$story->idstory) }}">
 				<div class="cover-theme">
 					<div class="cover">
 						<div class="desc ctn-main-font ctn-14px ctn-sek-color ctn-thin">

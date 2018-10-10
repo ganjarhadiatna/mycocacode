@@ -103,7 +103,7 @@ class MainController extends Controller
     function makeApps()
     {
         return view('featured.makeapps', [
-            'title' => 'Make Apps',
+            'title' => 'Make or Design Apps Now It\'s So Easy',
             'nav' => 'makeapps',
             'path' => 'makeapps',
         ]);
@@ -244,15 +244,6 @@ class MainController extends Controller
                 'topStory' => $topStory
             ]);
         }
-    }
-
-    function composeStory()
-    {
-        return view('compose.story', [
-            'title' => 'New Story', 
-            'path' => 'compose', 
-            'nav' => 'compose'
-        ]);
     }
 
 
