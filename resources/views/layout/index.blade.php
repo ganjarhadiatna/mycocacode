@@ -1,4 +1,5 @@
 <?php use App\ProfileModel; ?>
+<?php use App\TagModel; ?>
 
 <?php
 	if (isset($nav)) {
@@ -123,28 +124,69 @@
 			}
 		}
 
-		function addLove(idstory) {
-			if (iduser === '') {
+		function addLove(idstory, stt = 'small') {
+			var idlove = $('.love-'+idstory);
+			if (iduser === '') 
+			{
 				opAlert('open', 'Please login berfore you can love this story.');
-			} else {
+			} 
+			else 
+			{
 				$.ajax({
 					url: '{{ url("/add/love") }}',
 					type: 'post',
 					data: {'idstory': idstory},
 				})
 				.done(function(data) {
-					if (data === 'love') {
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' scc fa fa-lg fa-heart');
-					} else if (data === 'unlove') {
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' non fa fa-lg fa-heart');
-					} else if (data === 'failedadd') {
-						opAlert('open', 'Failed to love story.');
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' non fa fa-lg fa-heart');
-					} else if (data === 'failedremove') {
-						opAlert('open', 'Failed to unlove story.');
-						$('.love-'+idstory).attr('class', 'love-'+idstory+' scc fa fa-lg fa-heart');
-					} else {
-						opAlert('open', 'There is an error, please try again.');
+					if (stt == 'big') 
+					{
+						if (data === 'love') 
+						{
+							idlove.addClass('btn-color-gg').removeClass('btn-grey-color');
+						} 
+						else if (data === 'unlove') 
+						{
+							idlove.addClass('btn-grey-color').removeClass('btn-color-gg');
+						} 
+						else if (data === 'failedadd') 
+						{
+							opAlert('open', 'Failed to love story.');
+							idlove.addClass('btn-grey-color').removeClass('btn-color-gg');
+						} 
+						else if (data === 'failedremove') 
+						{
+							opAlert('open', 'Failed to unlove story.');
+							idlove.addClass('btn-color-gg').removeClass('btn-grey-color');
+						} 
+						else 
+						{
+							opAlert('open', 'There is an error, please try again.');
+						}
+					} 
+					else 
+					{
+						if (data === 'love') 
+						{
+							idlove.addClass('scc').removeClass('non');
+						} 
+						else if (data === 'unlove') 
+						{
+							idlove.addClass('non').removeClass('scc');
+						} 
+						else if (data === 'failedadd') 
+						{
+							opAlert('open', 'Failed to love story.');
+							idlove.addClass('non').removeClass('scc');
+						} 
+						else if (data === 'failedremove') 
+						{
+							opAlert('open', 'Failed to unlove story.');
+							idlove.addClass('scc').removeClass('non');
+						} 
+						else 
+						{
+							opAlert('open', 'There is an error, please try again.');
+						}
 					}
 				})
 				.fail(function() {
@@ -153,33 +195,73 @@
 			}
 		}
 
-		function addBookmark(idstory) {
-			if (iduser === '') {
+		function addBookmark(idstory, stt = 'small') {
+			var idbook = $('.bookmark-'+idstory);
+			if (iduser === '') 
+			{
 				opAlert('open', 'Please login berfore you can save this story.');
-			} else {
+			} 
+			else 
+			{
 				$.ajax({
 					url: '{{ url("/add/bookmark") }}',
 					type: 'post',
 					data: {'idstory': idstory},
 				})
 				.done(function(data) {
-					if (data === 'bookmark') {
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' scc fa fa-lg fa-bookmark');
-					} else if (data === 'unbookmark') {
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' non fa fa-lg fa-bookmark');
-					} else if (data === 'failedadd') {
-						opAlert('open', 'Failed to save story to bookmark.');
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' non fa fa-lg fa-bookmark');
-					} else if (data === 'failedremove') {
-						opAlert('open', 'Failed to remove story from bookmark.');
-						$('.bookmark-'+idstory).attr('class', 'bookmark-'+idstory+' scc fa fa-lg fa-bookmark');
-					} else {
-						opAlert('open', 'There is an error, please try again.');
+					if (stt == 'big') 
+					{
+						if (data === 'bookmark') 
+						{
+							idbook.addClass('btn-main3-color').removeClass('btn-grey-color');
+						} 
+						else if (data === 'unbookmark') 
+						{
+							idbook.addClass('btn-grey-color').removeClass('btn-main3-color');
+						} 
+						else if (data === 'failedadd') 
+						{
+							opAlert('open', 'Failed to bookmark story.');
+							idbook.addClass('btn-grey-color').removeClass('btn-main3-color');
+						} 
+						else if (data === 'failedremove') 
+						{
+							opAlert('open', 'Failed to unbookmark story.');
+							idbook.addClass('btn-main3-color').removeClass('btn-grey-color');
+						} 
+						else 
+						{
+							opAlert('open', 'There is an error, please try again.');
+						}
+					} 
+					else 
+					{
+						if (data === 'bookmark') 
+						{
+							idbook.addClass('scc').removeClass('non');
+						} 
+						else if (data === 'unbookmark') 
+						{
+							idbook.addClass('non').removeClass('scc');
+						} 
+						else if (data === 'failedadd') 
+						{
+							opAlert('open', 'Failed to bookmark story.');
+							idbook.addClass('non').removeClass('scc');
+						} 
+						else if (data === 'failedremove') 
+						{
+							opAlert('open', 'Failed to unbookmark story.');
+							idbook.addClass('scc').removeClass('non');
+						} 
+						else 
+						{
+							opAlert('open', 'There is an error, please try again.');
+						}
 					}
-					//console.log(data);
 				})
 				.fail(function(data) {
-					//console.log(data.responseJSON);
+					console.log(data.responseJSON);
 					opAlert('open', 'There is an error, please try again.');
 				});
 			}
@@ -247,6 +329,7 @@
 					</div>
 				</div>
 				<div class="col-2">
+					<!--
 					<div class="col-bar">
 						<button 
 							class="btn btn-radius btn-main2-color"
@@ -255,7 +338,9 @@
 							<span>Menu</span>
 						</button>
 					</div>
+					-->
 					<div class="col-mobile" id="col-mobile">
+						<!--
 						<div class="col-mobile-header">
 							<button 
 								class="btn btn-radius btn-main2-color"
@@ -264,7 +349,10 @@
 								<span>Close</span>
 							</button>
 						</div>
+						-->
 						<div class="col-2-1">
+							@include('main.search')
+							<!--
 							<ul class="hc-list">
 								<a href="{{ url('/designs') }}">
 							    	<li id="designs">
@@ -295,11 +383,12 @@
 							    	</li>
 							    </a>
 							</ul>
+							-->
 						</div>
 						<div class="col-2-2">
-							<a href="{{ url('/search') }}">
-								<button class="btn-icn btn btn-circle btn-main2-color" id="search" key="hide">
-									<span class="fas fa-lg fa-search"></span>
+							<a href="{{ url('/') }}" class="mobile-hide">
+								<button class="btn-icn btn btn-radius btn-main2-color" id="designs" key="hide">
+									<span>DESIGNS</span>
 								</button>
 							</a>
 							@if (!Auth::id())

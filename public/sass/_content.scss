@@ -436,7 +436,7 @@
 			.lef {
 				@include column_1();
 				.ttl {
-					@include post_top();
+					@include post_top(absolute);
 				}
 			}
 			.rig {
@@ -506,7 +506,7 @@
 				display: none;
 				cursor: pointer;
 				.change-cover {
-					@include post_top();
+					@include post_top(absolute);
 					width: calc(100% - 20px);
 					padding: 10px;
 					text-align: center;

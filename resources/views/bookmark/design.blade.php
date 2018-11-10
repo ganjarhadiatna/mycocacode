@@ -8,7 +8,7 @@
 		<div class="sc-block">
 			<div class="sc-col-1">
 				<h1 class="ttl-head ctn-main-font ctn-big">{{ $title }}</h1>
-				<p class="ctn-main-font ctn-mikro ctn-thin">{{ $total.' designs' }}</p>
+				<p class="ctn-main-font ctn-18px ctn-thin">{{ $total.' designs' }}</p>
 			</div>
 		</div>
 	</div>

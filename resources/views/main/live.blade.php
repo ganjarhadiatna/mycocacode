@@ -27,16 +27,14 @@
 			</a>
 		</div>
 		<div class="bot-tool">
+			<div class="nts">
+				<div class="notes ctn-main-font ctn-12px ctn-sek-color ctn-thin padding-bottom-5px">
+					<span>{{ $live->views.' watchs' }}</span>
+				</div>
+			</div>
 			<div>
 				<h1 class="ctn-main-font ctn-16px ctn-sek-color ctn-bold padding-bottom-5px">{{ $live->title }}</h1>
 				<p class="ctn-main-font ctn-12px ctn-sek-color ctn-thin">{{ $live->description }}</p>
-			</div>
-			<div class="nts">
-				<div class="notes ctn-main-font ctn-12px ctn-sek-color ctn-thin padding-bottom-10px">
-					<span>{{ $live->created }}</span>
-					<br>
-					<span>{{ $live->views.' watchs' }}</span>
-				</div>
 			</div>
 		</div>
 		

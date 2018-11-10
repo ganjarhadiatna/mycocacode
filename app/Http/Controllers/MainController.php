@@ -136,9 +136,9 @@ class MainController extends Controller
     }
     function tagsId($ctr)
     {
-        $topStory = StoryModel::PagTagStory($ctr, 20);
+        $topStory = StoryModel::PagTagStory(urldecode($ctr), 20);
         return view('others.index', [
-            'title' => $ctr,
+            'title' => strtoupper(urldecode($ctr)),
             'path' => 'none',
             'nav' => 'all-ctr',
             'topStory' => $topStory

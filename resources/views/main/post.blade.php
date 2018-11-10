@@ -1,19 +1,5 @@
 <div class="frame-post">
 	<div class="mid">
-		<div class="bot-tool padding-bottom-10px">
-			<div class="nts">
-				<div class="pp">
-					<a href="{{ url('/user/'.$story->id) }}">
-						<div class="image image-25px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
-					</a>
-					<a href="{{ url('/user/'.$story->id) }}">
-						<div class="username">
-							{{ $story->username }}
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
 		<div class="mid-tool">
 			<a href="{{ url('/design/'.$story->idstory) }}">
 				<div class="cover-theme">
@@ -26,7 +12,7 @@
 						style="background-image: url({{ asset('/story/thumbnails/'.$story->cover1) }});"></div>
 				</div>
 			</a>
-		</div>
+		</div>		
 		<div class="bot-tool">
 			<div class="nts">
 				<div class="notes ctn-main-font ctn-12px ctn-sek-color ctn-thin padding-bottom-10px">
@@ -54,6 +40,21 @@
 				</button>
 			</div>
 		</div>
-		
+	</div>
+	<div class="padding-top-10px mobile-hide">
+		<div class="nts">
+			<div class="pp">
+				<div class="pp-col-1">
+					<a href="{{ url('/user/'.$story->id) }}">
+						<div class="image image-25px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
+					</a>
+				</div>
+				<div class="pp-col-2">
+					<a href="{{ url('/user/'.$story->id) }}" class="pp-username">
+						{{ $story->username }}
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

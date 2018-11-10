@@ -191,36 +191,56 @@
 			<div class="col-1">
 				<a href="{{ url('/user/'.$story->id) }}">
 					<div 
-					class="image image-50px image-circle" 
+					class="image image-40px image-circle" 
 					style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
 				</a>
 			</div>
 			<div class="col-2">
-				<h1 class="username ctn-main-font ctn-sek-color ctn-mikro" style="line-height: 1.2;">
+				<h1 class="username ctn-main-font ctn-sek-color ctn-16px" style="line-height: 1.2;">
 					<a href="{{ url('/user/'.$story->id) }}">
 						{{ $story->username }}
 					</a>
 				</h1>
-				<p class="ctn-main-font ctn-sek-color ctn-12px ctn-thin" style="line-height: 1.2;">
+				<p class="ctn-main-font ctn-sek-color ctn-12px ctn-thin" style="line-height: 1;">
 					Published on {{ $story->created }}
 				</p>
+			</div>
+			<div class="col-3">
+				@if (is_int($story->is_love))
+					<button 
+						class="love-{{ $story->idstory }} btn btn-color-gg btn-circle"
+						onclick="addLove('{{ $story->idstory }}', 'big')">
+						<span class="fa fa-lg fa-heart"></span>
+					</button>
+				@else
+					<button 
+						class="love-{{ $story->idstory }} btn btn-grey-color btn-circle"
+						onclick="addLove('{{ $story->idstory }}', 'big')">
+						<span class="fa fa-lg fa-heart"></span>
+					</button>
+				@endif
+				<div style="margin-right: 4px; display: inline-block;"></div>
+				@if (is_int($story->is_save))
+					<button 
+						class="bookmark-{{ $story->idstory }} btn btn-main3-color"
+						onclick="addBookmark('{{ $story->idstory }}', 'big')">
+						Saves
+					</button>
+				@else
+					<button 
+						class="bookmark-{{ $story->idstory }} btn btn-grey-color"
+						onclick="addBookmark('{{ $story->idstory }}', 'big')">
+						Saves
+					</button>
+				@endif
 			</div>
 		</div>
 	</div>
 
 	<div class="mid">
-		<div class="grid">
+		<div class="grids">
 			<div class="col-1">
-				<div>
-					@if ($story->description)
-						<div 
-							class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-20px"
-							style="white-space: normal;">
-							{{ $story->description }}
-						</div>
-					@endif
-				</div>
-				<div class="pict" onclick="changeSize()">
+				<div class="pict">
 					@foreach ($images as $img)
 						<div class="image" 
 							style="
@@ -230,53 +250,48 @@
 						</div>
 					@endforeach
 				</div>
-
 				<div>
-					<div class="top-comment" id="tr-comment">
-						@if (Auth::id())
-						<div class="bdr-top bdr-bottom">
-							<form method="post" action="javascript:void(0)" id="comment-publish">
-								<div class="comment-head padding-20px">
-									<div>
-										<textarea class="txt edit-text et-height-50px comment-text txt-primary-color" id="comment-description" placeholder="Write comments.."></textarea>
-									</div>
-									<div class="padding-top-15px" style="text-align: right;">
-										<input type="submit" name="post" class="btn btn-main-color" value="Send">
-									</div>
-								</div>
-							</form>
+					@if ($story->description)
+						<div 
+							class="ctn-main-font ctn-sek-color ctn-mikro padding-bottom-15px"
+							style="white-space: normal;">
+							{{ $story->description }}
 						</div>
-						<div class="padding-top-20px"></div>
-						@endif
-						<div class="comment-content" id="place-comment"></div>
-					</div>
-					<div class="frame-more" id="frame-more-comment">
-						<input type="hidden" name="offset" id="offset-comment" value="0">
-						<input type="hidden" name="limit" id="limit-comment" value="0">
-						<button class="btn btn-sekunder-color btn-radius" id="load-more-comment">
-							<span class="Load More Comment">Load More</span>
-						</button>
-					</div>
+					@endif
 				</div>
-
 			</div>
 			<div class="col-2">
+				@if (count($tags) > 0)
+					<div class="info">
+						<h2 class="ctn-main-font ctn-sek-color ctn-16px">
+							Tags
+						</h2>
+						<div class="padding-15px">
+							@foreach($tags as $tag)
+							
+							<?php 
+								$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+								$title = str_replace($replace, '', $tag->tag); 
+							?>
+
+							<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
+								<div>{{ $tag->tag }}</div>
+							</a>
+							@endforeach
+						</div>
+					</div>
+				@endif
+
 				<div class="info">
-					<h2 class="ctn-main-font ctn-sek-color ctn-18px">
+					<h2 class="ctn-main-font ctn-sek-color ctn-16px">
 						Notes
 					</h2>
 
 					<div class="block">
-						<div class="icn love pointer" key="{{ $story->idstory }}" onclick="addLove('{{ $story->idstory }}')">
-							@if (is_int($story->is_love))
-								<span class="sh">
-									<span class="love-{{ $story->idstory }} scc fa fa-lg fa-heart"></span>
-								</span>
-							@else
-								<span class="sh">
-									<span class="love-{{ $story->idstory }} non fa fa-lg fa-heart"></span>
-								</span>
-							@endif
+						<div class="icn love">
+							<span class="sh">
+								<span class="non fa fa-lg fa-heart"></span>
+							</span>
 							<span>Like this?</span>
 						</div>
 						<div class="ctn">
@@ -285,16 +300,10 @@
 					</div>
 
 					<div class="block">
-						<div class="icn save pointer" key="{{ $story->idstory }}" onclick="addBookmark('{{ $story->idstory }}')">
-							@if (is_int($story->is_save))
-								<span class="sh">
-									<span class="bookmark-{{ $story->idstory }} scc fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
-								</span>
-							@else
-								<span class="sh">
-									<span class="bookmark-{{ $story->idstory }} non fa fa-lg fa-bookmark" id="bookmark-{{ $story->idstory }}"></span>
-								</span>
-							@endif
+						<div class="icn save">
+							<span class="sh">
+								<span class="non fa fa-lg fa-bookmark"></span>
+							</span>
 							<span>Save this?</span>
 						</div>
 						<div class="ctn">
@@ -324,7 +333,7 @@
 				</div>
 
 				<div class="info">
-					<h2 class="ctn-main-font ctn-sek-color ctn-18px padding-top-20px">
+					<h2 class="ctn-main-font ctn-sek-color ctn-16px padding-top-15px">
 						Options
 					</h2>
 					<div class="block">
@@ -358,30 +367,37 @@
 						</div>
 					</div>
 					@endif
-
+					<div class="padding-bottom-15px"></div>
 				</div>
-
-				@if (count($tags) > 0)
-					<div class="padding-10px"></div>
-					<div class="info">
-						<h2 class="ctn-main-font ctn-sek-color ctn-18px">
-							Tags
+				<div class="">
+					<div class="top-comment" id="tr-comment">
+						<h2 class="ctn-main-font ctn-sek-color ctn-16px">
+							Comments
 						</h2>
-						<div class="padding-15px">
-							@foreach($tags as $tag)
-							
-							<?php 
-								$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-								$title = str_replace($replace, '', $tag->tag); 
-							?>
-
-							<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
-								<div>{{ $tag->tag }}</div>
-							</a>
-							@endforeach
+						@if (Auth::id())
+						<div>
+							<form method="post" action="javascript:void(0)" id="comment-publish">
+								<div class="comment-head padding-top-15px">
+									<div>
+										<textarea class="txt edit-text et-height-50px comment-text txt-primary-color" id="comment-description" placeholder="Write comments.."></textarea>
+									</div>
+									<div class="padding-top-15px" style="text-align: right;">
+										<input type="submit" name="post" class="btn btn-main-color" value="Send">
+									</div>
+								</div>
+							</form>
 						</div>
+						@endif
+						<div class="comment-content" id="place-comment"></div>
 					</div>
-				@endif
+					<div class="frame-more" id="frame-more-comment">
+						<input type="hidden" name="offset" id="offset-comment" value="0">
+						<input type="hidden" name="limit" id="limit-comment" value="0">
+						<button class="btn btn-sekunder-color btn-radius" id="load-more-comment">
+							<span class="Load More Comment">Load More</span>
+						</button>
+					</div>
+				</div>
 
 			</div>
 		</div>
@@ -390,5 +406,16 @@
 </div>
 
 @endforeach
+
+@if (count($newStory) == 0)
+	@include('main.post-empty')	
+@else
+	<div class="post">
+		@foreach ($newStory as $story)
+			@include('main.post')
+		@endforeach
+	</div>
+	<div class="padding-10px"></div>
+@endif
 
 @endsection

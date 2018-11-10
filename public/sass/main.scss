@@ -41,6 +41,12 @@ a {
 	text-decoration: none;
 }
 
+.mobile-hide {
+	@media (max-width: $max-width) {
+		display: none;
+	}
+}
+
 .col-all {
 	@include col_all();
 }
@@ -173,7 +179,7 @@ a {
 	width: 100%;
 	height: 55px;
 	@media (max-width: $max-width) {
-		//height: 100px;
+		height: 105px;
 	}
 	.hc-place {
 		position: fixed;
@@ -183,12 +189,14 @@ a {
 		height: 55px;
 		background-color: #333;
 		z-index: 100;
+		@media (max-width: $max-width) {
+			height: 105px;
+		}
 		.hc-menu {
 			position: relative;
 
 			width: $col-full;
 			height: 40px;
-			overflow: hidden;
 
 			padding: 7.5px 0;
 			margin: auto;
@@ -223,16 +231,9 @@ a {
 			.col-mobile {
 				position: relative;
 				width: 100%;
-				@include grid_2x(1fr, 1fr);
+				@include grid_2x(500px, 1fr);
 				@media (max-width: $max-width) {
-					position: fixed;
-					top: 0;
-					right: 0;
-					width: 300px;
-					height: 100vh;
-					background-color: #333;
-					display: none;
-
+					@include grid_none();
 				}
 				&.op-col-mobile {
 					&:before {
@@ -250,15 +251,15 @@ a {
 				.col-2-1 {
 					@include column_n(1);
 					@media (max-width: $max-width) {
-						border-bottom: 0.25px #fff solid;
+						position: fixed;
+						top: 55px;
+						left: 0;
+						width: 100%;
 					}
 				}
 				.col-2-2 {
 					@include column_n(2);
 					text-align: right;
-					@media (max-width: $max-width) {
-						//border-bottom: 0.25px #fff solid;
-					}
 				}
 				.col-mobile-header {
 					display: none;
@@ -278,19 +279,15 @@ a {
 				border-radius: 40px;
 				overflow: hidden;
 				img {
-					@include post_top();
+					@include post_top(absolute);
 					width: 100%;
 				}
 			}
 			.btn-icn-rgs {
-				margin-left: 15px;
+				margin-left: 6px;
 				@media (max-width: $max-width) {
 					position: relative;
-					width: calc(75% / 2);
-					height: 60px;
-					float: left;
-					border-radius: 0;
-					margin: 0 0;
+					
 				}
 
 			}
@@ -303,10 +300,6 @@ a {
 				}
 				@media (max-width: $max-width) {
 					position: relative;
-					width: 25%;
-					height: 60px;
-					float: left;
-					border-radius: 0;
 				}
 			}
 			.create {
@@ -314,7 +307,7 @@ a {
 				vertical-align: top;
 				margin-left: 20px;
 				@media (max-width: $max-width) {
-					/*position: fixed;
+					position: fixed;
 
 					right: 10px;
 					bottom: 10px;
@@ -323,25 +316,16 @@ a {
 					height: 45px;
 					padding: 0 0;
 
-					z-index: 100;*/
-					position: relative;
-					width: 100%;
-					height: 60px;
-					border-radius: 0;
-					border-top: 0.25px #fff solid;
-					margin: 0 0;
+					z-index: 100;
 				}
 				.ttl {
 					@media (max-width: $max-width) {
-						//display: none;
+						display: none;
 					}
 				}
 			}
 		}
 		.hc-list {
-			position: relative;
-			width: 100%;
-			overflow: hidden;
 			li {
 				position: relative;
 				height: 45px;
@@ -437,14 +421,15 @@ a {
 		}
 	}
 }
+
 #main-search {
 	position: relative;
 	margin: auto;
-	width: 600px;
-	height: 45px;
+	width: 100%;
+	height: 40px;
 	overflow: hidden;
-	background-color: $sek-color;
-	border-radius: 45px;
+	background-color: rgba($color: #000, $alpha: 0.24);
+	border-radius: 5px;
 	@media (max-width: $max-width) {
 		width: calc(100% - 20px);
 	}
@@ -452,7 +437,7 @@ a {
 		background-color: rgba(225,225,225,0.34);
 		.txt {
 			//background-color: rgba(225,225,225,0.34);
-			color: rgba(0,0,0,0.84);
+			color: #fff;
 		}
 		.btn {
 			//background-color: rgba(225,225,225,0.34);
@@ -461,15 +446,16 @@ a {
 	}
 	.txt {
 		width: calc(100% - 100px);
-		height: 45px;
+		height: 40px;
 		float: left;
 		background-color: rgba(0,0,0,0);
 		color: rgba(0,0,0,0.54);
 		border-radius: 0;
+		color: #fff;
 	}
 	.btn {
 		width: 70px;
-		height: 45px;
+		height: 40px;
 		padding: 0 0;
 		float: left;
 		border-radius: 0;

@@ -60,7 +60,7 @@ class TagModel extends Model
         ->orderBy('tag', 'asc')
         ->get();
     }
-    function scopeTopSmallTags($query)
+    function scopeTopSmallTags($query, $limit = 8)
     {
         return DB::table('tags')
         ->select(
@@ -70,7 +70,7 @@ class TagModel extends Model
         )
         ->groupBy('tag')
         ->orderBy('ttl_tag', 'desc')
-        ->limit(8)
+        ->limit($limit)
         ->get();
     }
     function scopeSearchTags($query, $ctr)

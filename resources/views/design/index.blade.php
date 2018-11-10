@@ -13,9 +13,9 @@
 <div class="banner">
 	<div class="padding-20px">
 		<h1>It's A Place For Designers <br> To Sit Down</h1>
-		<h3>Find your inspirations here.</h3>
-		<div class="padding-20px">
-			@include('main.search')
+		<p>Find your inspirations here.</p>
+		<div class="padding-15px">
+			<!--@include('main.search')-->
 		</div>
 	</div>
 </div>

@@ -29,7 +29,7 @@
 	}
 	.top-tool {
 		.main-ttl {
-			@include post_top();
+			@include post_top(absolute);
 			font-size: $txt-size-desc;
 			font-weight: 600;
 			color: $txt-min-color;
@@ -38,7 +38,7 @@
 			}
 		}
 		.ttl-story a {
-			@include post_top();
+			@include post_top(absolute);
 			font-size: $txt-size-small;
 			font-weight: 600;
 			color: $txt-min-color;
@@ -120,22 +120,13 @@
 			height: 25px;
 			@include column_1();
 			.icn {
-				@include post_top();
+				@include post_top(absolute);
 				font-size: 14px;
 				font-weight: 600;
 				color: $txt-min-color;
 			}
 			.notes {
 				line-height: 25px;
-			}
-			.pp {
-				@include grid_2x(30px, 1fr);
-				.username {
-					@include post_top();
-					font-size: 14px;
-					font-weight: 600;
-					color: $txt-sek-color;
-				}
 			}
 		}
 		.bok {
@@ -154,6 +145,32 @@
 		.btn {
 			height: 30px;
 			line-height: 0;
+		}
+	}
+	.pp {
+		position: relative;
+		width: 100%;
+		@include grid_2x(30px, 1fr);
+		.pp-col-1 {
+			@include column_1();
+			position: relative;
+			width: 100%;
+			height: 25px;
+				}
+		.pp-col-2 {
+			@include column_2();
+			position: relative;
+			width: 100%;
+			height: 25px;
+		}
+		.pp-username {
+			@include post_top(absolute);
+			font-size: 14px;
+			font-weight: 600;
+			color: $txt-sek-color;
+			&:hover {
+				color: $txt-min-color;
+			}
 		}
 	}
 	.desc {
@@ -497,7 +514,7 @@
 		position: relative;
 		@include column_2();
 		.fl-ttl {
-			@include post-top;
+			@include post-top(absolute);
 			font-size: 16px;
 			font-weight: 600;
 			a {
@@ -635,7 +652,7 @@
 
 .frame-story {
 	position: relative;
-	width: calc(1000px - 50px);
+	width: calc(700px - 50px);
 	padding: 25px;
 	margin: auto;
 	margin-top: 20px;
@@ -662,12 +679,16 @@
 		width: 100%;
 		padding-bottom: 20px;
 		.grid {
-			@include grid_2x(65px, 1fr);
+			@include grid_3x(50px, 1fr, 150px);
 			.col-1 {
 				@include column_1();
 			}
 			.col-2 {
 				@include column_2();
+			}
+			.col-3 {
+				@include column_3();
+				text-align: right;
 			}
 		}
 		.username {
@@ -686,8 +707,8 @@
 			}
 			.col-2 {
 				@include column_2();
-				width: calc(100% - 50px);
-				padding: 0 25px;
+				width: calc(100% - 25px);
+				padding-left: 25px;
 				@media (max-width: $max-width) {
 					width: calc(100%);
 					padding: 0 0;
@@ -698,7 +719,7 @@
 			position: relative;
 			width: 100%;
 			background-color: #fff;
-			margin-bottom: 20px;
+			margin-bottom: 15px;
 			cursor: pointer;
 		}
 		.info {
@@ -706,12 +727,10 @@
 			width: 100%;
 			.block {
 				position: relative;
-				padding: 20px 0;
+				margin: 15px 0;
 				color: $txt-pri-color;
 				font-weight: 500;
 				font-size: 14px;
-
-				@include bdr_bottom();
 				@include grid_2x(1fr, 1fr);
 
 				.icn {
@@ -1166,7 +1185,7 @@
 	.mid {
 		@include column_2();
 		.ttl {
-			@include post_top();
+			@include post_top(absolute);
 		}
 	}
 	.rig {

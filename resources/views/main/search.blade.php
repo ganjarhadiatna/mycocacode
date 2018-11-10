@@ -5,9 +5,9 @@
 			name="q" 
 			class="txt txt-main-color txt-no-shadow" 
 			id="txt-search" 
-			placeholder="Search CocaCode.." 
+			placeholder="Search..." 
 			required="true">
-		<button type="submit" class="btn btn-main-color">
+		<button type="submit" class="btn btn-main2-color">
 			<span class="fa fa-lg fa-search"></span>
 		</button>
 	</form>

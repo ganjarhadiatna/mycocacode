@@ -3,7 +3,19 @@
 @section('path', $path)
 @section('content')
 
-<div class="col-700px padding-top-20px">
+<div class="sc-header padding-15px">
+	<div class="sc-place">
+		<div class="sc-block">
+			<div class="sc-col-1">
+				<h1 class="ttl-head ctn-main-font ctn-big">Search</h1>
+				<p class="ctn-main-font ctn-18px ctn-thin">Results for {{ $ctr }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-700px">
+	<!--
 	<form action="javascript:void" method="get" id="place-search">
 		<div class="place-search padding-top-10px">
 			<input 
@@ -11,7 +23,7 @@
 				name="q" 
 				class="txt-search" 
 				id="txt-search" 
-				placeholder="Search CocaCode..." 
+				placeholder="Search..." 
 				required="true" 
 				value="{{ $ctr }}">
 			<button type="submit" class="btn-search">
@@ -19,6 +31,7 @@
 			</button>
 		</div>
 	</form>
+	-->
 
 	@if (!empty($ctr))
 

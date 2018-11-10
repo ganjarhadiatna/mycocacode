@@ -83,7 +83,7 @@
 				color: $txt-sek-color;
 			}
 			.ttl-head-2 {
-				@include post_top();
+				@include post_top(absolute);
 				color: $txt-sek-color;
 			}
 		}
