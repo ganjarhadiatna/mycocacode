@@ -387,8 +387,8 @@
 						</div>
 						<div class="col-2-2">
 							<a href="{{ url('/') }}" class="mobile-hide">
-								<button class="btn-icn btn btn-radius btn-main2-color" id="designs" key="hide">
-									<span>DESIGNS</span>
+								<button class="btn-icn btn btn-radius btn-main2-color" id="home" key="hide">
+									<span>HOME</span>
 								</button>
 							</a>
 							@if (!Auth::id())
@@ -478,22 +478,11 @@
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 				consequat.</p>
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat.</p>
 			</div>
 			
 			<div class="ft-col ft-col-2">
 				<h1>Options</h1>
 				<ul class="ft-menu">
-				    <li>
-				    	<span class="icn icn-small fa fa-lg fa-circle"></span>
-				    	<span>Home Feeds</span>
-				    </li>
 				    <li>
 				    	<span class="icn icn-small fa fa-lg fa-circle"></span>
 				    	<span>About Us</span>
@@ -513,10 +502,6 @@
 				    <li>
 				    	<span class="icn icn-small fa fa-lg fa-circle"></span>
 				    	<span>Policy</span>
-				    </li>
-				    <li>
-				    	<span class="icn icn-small fa fa-lg fa-circle"></span>
-				    	<span>Groups</span>
 				    </li>
 				</ul>
 			</div>
@@ -540,22 +525,6 @@
 				    	<span class="icn fab fa-lg fa-youtube"></span>
 				    	<span>Youtube</span>
 				    </li>
-				    <li>
-				    	<span class="icn fab fa-lg fa-pinterest"></span>
-				    	<span>Pinterest</span>
-				    </li>
-				    <li>
-				    	<span class="icn fab fa-lg fa-medium"></span>
-				    	<span>Medium</span>
-				    </li>
-				    <li>
-				    	<span class="icn fab fa-lg fa-behance"></span>
-				    	<span>Behance</span>
-				    </li>
-				    <li>
-				    	<span class="icn fab fa-lg fa-dribbble"></span>
-				    	<span>Dribbble</span>
-				    </li>
 				</ul>
 			</div>
 			
@@ -565,10 +534,6 @@
 				    <li>
 				    	<span class="icn fab fa-lg fa-whatsapp"></span>
 				    	<span>(+62) 888 8888 88</span>
-				    </li>
-				    <li>
-				    	<span class="icn fab fa-lg fa-whatsapp"></span>
-				    	<span>(+62) 888 6666 88</span>
 				    </li>
 				    <li>
 				    	<span class="icn fa fa-lg fa-envelope"></span>

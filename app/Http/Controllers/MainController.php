@@ -40,7 +40,7 @@ class MainController extends Controller
         return view('design.index', [
             'title' => 'Its a place for designer',
             'nav' => 'designs',
-            'path' => 'fresh',
+            'path' => 'designs',
             'topStory' => $topStory
         ]);
     }

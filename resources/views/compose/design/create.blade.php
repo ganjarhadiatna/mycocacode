@@ -71,7 +71,7 @@
 			   	} else if (data == 'no-file') {
 			   		opAlert('open', 'you must select files.');
 			   	} else {
-					window.location = '{{ url("/story/") }}'+'/'+data;
+					window.location = '{{ url("/design/") }}'+'/'+data;
 			   	}
 			   	//console.log(data);
 			})

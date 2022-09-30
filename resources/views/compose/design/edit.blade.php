@@ -36,7 +36,7 @@
 				$('#write-story').val('');
 				opCreateStory('close');
 				close_progress();
-				window.location = '{{ url("/story/") }}'+'/'+data;
+				window.location = '{{ url("/design/") }}'+'/'+data;
 		   	}
 		   	//console.log(data);
 		})
@@ -115,6 +115,8 @@
 					<div class="top"></div>
 
 					<div class="mid">
+
+						<input type="hidden" name="id-story" id="id-story" value="{{ $story->id }}">
 						
 						<div class="block-field">
 

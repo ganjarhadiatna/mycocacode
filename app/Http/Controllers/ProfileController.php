@@ -53,7 +53,7 @@ class ProfileController extends Controller
 	{
 		$iduser = Auth::id();
 		if ($iduser) {
-			$path = 'design';
+			$path = 'saved';
 		} else {
 			$path = 'none';
 		}
